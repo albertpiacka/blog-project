@@ -374,6 +374,26 @@ html.transition *:after {
   transition-delay: 0 !important;
 }
 
+.add-post .form-container {
+  width: 50%;
+  margin: 1em auto;
+}
+.add-post .form-container textarea {
+  border-radius: 1em;
+  padding: 0.5em;
+  width: 100%;
+}
+.add-post .form-container input {
+  border-radius: 1em;
+  padding: 0.5em;
+  border: none;
+  outline: none;
+}
+.add-post .form-container *:focus {
+  border: none;
+  outline: none;
+}
+
 .home .main .articles-heading {
   padding: 0 3em 2em 3em;
   text-align: center;
