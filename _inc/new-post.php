@@ -1,6 +1,6 @@
 <?php
 
-    require('_inc/config.php');
+    require('config.php');
 
     $message = $_POST['message'];
 
@@ -8,8 +8,9 @@
               VALUES ('$message')");
 
     if($id){
-
-        header('Location: '.$base_url.'posts.php');
-        die();
-
+        $json = json_encode($message);
+        // header('Location: '.$base_url.'add-post.php');
+        die($json);
     }
+
+

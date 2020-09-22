@@ -1,16 +1,20 @@
 <?php include_once('_partials/header.php') ?>
 
-                <form action="_inc/new-post.php" method="post">
+                <form id="myForm" action="_inc/new-post.php" method="post">
                     <textarea name="message" id="message" cols="30" rows="10" placeholder="type"></textarea>
                     <input type="submit" placeholder="submit">
                 </form>
 
-                <div class="fetch-data">
-                    <ul>
+                <div>
+                    <ul id="posts">
                         <?php
                             $posts = $DB->query("SELECT * FROM posts");
 
-                            var_dump($posts->fetchAll());
+                            foreach($posts as $post){
+                                echo '<li>';
+                                echo $post['text'];
+                                echo '<li>';
+                            }
 
                         ?>
                     </ul>

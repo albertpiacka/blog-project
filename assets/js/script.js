@@ -56,45 +56,49 @@ var post = document.querySelector('.post-wrapper'),
     postPrimary = document.querySelector('.primary'),
     postSecondary = document.querySelector('.secondary');
 
-post.addEventListener('click', function(e){
-    if(e.target != textarea){
-        this.classList.toggle('flexed');
-        postPrimary.classList.toggle('unflexed');
-    }
-    
-});
+if(post){
+    post.addEventListener('click', function(e){
+        if(e.target != textarea){
+            this.classList.toggle('flexed');
+            postPrimary.classList.toggle('unflexed');
+        }
+        
+    });
+}
 
 // postSecondary.addEventListener('click', function(){
 //     postSecondary.classList.toggle('slide-down');
 // });
 
 
+var form = document.getElementById('myForm'),
+    textarea = document.querySelector('textarea'),
+    posts = document.getElementById('posts');
 
-
-// var form = document.getElementById('myForm'),
-//     posts = document.getElementById('posts');
-
-// form.addEventListener('submit', function(e){
-//     e.preventDefault();
-
-//     var url = form.getAttribute('action');
-
-//     const formData = new FormData(this);
-
-//     fetch(url, {
-//         method: 'POST',
-//         body: formData
-//     }).then(function(response){
-//         return response.text();
-//     }).then(function(text){
-//         var post = JSON.parse(text);
-//         var newPost = document.createElement('li');
-
-//         newPost.innerHTML = post;
-
-//         posts.append(newPost);
-//     }).catch(function(response){
-//         return;
-//     });
-
-// });
+if(form){
+    form.addEventListener('submit', function(e){
+        e.preventDefault();
+    
+        var url = form.getAttribute('action');
+    
+        const formData = new FormData(this);
+    
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        }).then(function(response){
+            return response.text();
+        }).then(function(text){
+            var post = JSON.parse(text);
+            var newPost = document.createElement('li');
+    
+            newPost.innerHTML = post;
+    
+            posts.append(newPost);
+            textarea.value = '';
+        }).catch(function(response){
+            return;
+        });
+    
+    });
+}
