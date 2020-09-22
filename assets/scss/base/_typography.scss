@@ -1,0 +1,21 @@
+/**
+ * Basic typography style for copy text
+ */
+body {
+  font: {
+    size: 100%;
+    family: $font-primary;
+  }
+  h1 {
+    font-size: 7em;
+  }
+
+  a {
+    font-family: inherit;
+  }
+
+  #strip-menu i {
+    font-size: 200%;
+  }
+}
+

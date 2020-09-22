@@ -1,0 +1,41 @@
+// -----------------------------------------------------------------------------
+// This file contains general settings for header.
+// -----------------------------------------------------------------------------
+header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+    @media (max-width: 800px){
+        grid-template-columns: 1fr;
+    }
+    ul {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        width: 30%;
+        margin: 1em auto;
+
+        li {
+            grid-row-start: 2;
+            grid-row-end: 2;
+        }
+        
+
+        i {
+            color: var(--color-text);
+        }
+
+        strong {
+            cursor: pointer;
+        }
+    }
+
+    #logo2{
+       margin: 4em; 
+       path {
+           stroke: var(--color-headings);
+       }
+    }
+}

@@ -1,0 +1,27 @@
+// -----------------------------------------------------------------------------
+// This file contains animations.
+// -----------------------------------------------------------------------------
+
+//Article on page load
+@keyframes articleSlide {
+    from {
+        top: 10em;
+    }
+
+    to {
+        top: 0;
+    }
+}
+
+@keyframes line-animation {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+#logo2 path {
+    stroke-dasharray: 5693.373046875;
+    stroke-dashoffset: 5693.373046875;
+    animation: 20s line-animation ease forwards;
+}
+

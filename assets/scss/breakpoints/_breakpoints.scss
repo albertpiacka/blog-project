@@ -1,0 +1,18 @@
+
+
+$widths: (
+    "950px": 600px,
+    "800px": 500px
+);
+
+@each $width, $size in $widths {
+    @media (max-width: $width) {
+        .articles {
+            article {
+                max-width: $size;
+            }
+        }
+    }
+}
+
+

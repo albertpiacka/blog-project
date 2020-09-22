@@ -1,0 +1,52 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the home page.
+// -----------------------------------------------------------------------------
+.home {
+    .main {
+        .articles-heading {
+            padding: 0 3em 2em 3em;
+            text-align: center;
+
+            color: var(--color-headings);
+
+            font-size: 5em;
+            font-weight: 900;
+        }
+
+        .articles {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            width: 80%;
+            margin: auto;
+            text-align: center;
+            position: relative;
+            animation: articleSlide 1s ease forwards;
+            @media (max-width: 690px){
+                display: block;
+            } 
+        
+            article {
+                z-index: 1;
+                padding: 2em;
+                @extend %article;
+                transition: 1s transform ease;
+                &:hover {
+                    transform: scale(1.1);
+                }
+                &:nth-of-type(even){
+                    z-index: 2;
+                    top: -4em;
+                    left: -1em;
+                    box-shadow: 8em 2em 10em 5em var(--color-shadow);
+                    @media (max-width: 1299px){
+                        box-shadow: none;
+                        top: 0;
+                        left: 0;
+                    }   
+                }
+            }
+        }
+    }
+}
+
+

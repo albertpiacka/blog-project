@@ -1,0 +1,119 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the posts page.
+// -----------------------------------------------------------------------------
+
+.posts {
+    .post-section {
+        display: flex;
+        flex: row wrap;
+        align-items: flex-start;
+        width: 80%;
+        margin: auto;
+        .post-wrapper {
+            width: 75%;
+            transition: all .5s ease;
+            position: relative;
+        }
+
+        .flexed {
+            width: 95%;
+        }
+
+        .post {
+            margin: 1em;
+            position: absolute;
+            top: 0;
+            @extend %article;
+            
+            .img-container {
+                width: 100%;
+            }
+
+            .paragraphs {
+                text-align: left;
+                padding: 1em;
+            }
+
+            &:first-of-type {
+                z-index: 2;
+            }
+            
+        }
+
+        .secondary {
+            display: none;
+        }
+
+        @media (max-width: 1050px){
+            display: block;
+            width: 100%;
+            flex-direction: column;
+            margin: auto;
+            .primary {
+                display: none;
+            }
+
+            .secondary {
+                display: block;
+                height: 5em;
+                overflow: hidden;
+            }
+
+            .post-wrapper {
+                width: 100%;
+            }
+        }
+
+        .post-menu {
+            margin: 1em;
+            padding: 1em;
+            background: var(--bg-article);
+            color: $color-article;
+            border-radius: 1em;
+            width: 25%;
+            transition: all .5s ease;
+
+            @media (max-width: 1050px){
+                width: 100%;
+                margin: auto;
+            }
+    
+            .post-thumbnail {
+                padding: 1em;
+                margin: .5em auto;
+                border-radius: 2em;
+                background: var(--bg);
+                color: var(--color-text);
+                border: none;
+                outline: none;
+            }
+
+            .search-box {
+                margin: .5em auto;
+                text-align: center;
+                input {
+                    padding: 1em;
+                    border-radius: 2em;
+                    border: none;
+                    outline: none;
+                    width: 100%;
+                }
+            }
+        }
+
+        .unflexed {
+            width: 5%;
+            .post-thumbnail {
+                color: transparent;
+            }
+        }
+
+        .slide-down {
+            height: 17.2em;
+            // overflow: auto; add later
+        }
+    }
+}
+
+
+

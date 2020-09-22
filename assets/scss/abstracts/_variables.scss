@@ -1,0 +1,39 @@
+// -----------------------------------------------------------------------------
+// This file contains variables.
+// -----------------------------------------------------------------------------
+ 
+$font-primary: 'Kumbh Sans', sans-serif;
+$font-secondary: 'Roboto', sans-serif; 
+
+$transition: .3s;
+$side-menu-width: 300px;
+$color-side-menu-bg: #2B2929;
+$color-side-menu-text: #fafafa;
+$color-bg-page: #F49F2C;
+
+$color-article: rgba(250, 250, 250, 1);
+
+html {
+    --bg: #fff;
+    --color-headings: #000;
+    --color-text: #000;
+    --color-shadow: #fff;
+
+    
+    --bg-article: #4d4949;
+
+    --color-button-bg: #000;
+    --color-button-switch: #fff;
+}
+
+html[data-theme='dark'] {
+    --bg: #333333;
+    --color-headings: #fff;
+    --color-text: #fff;
+    --color-shadow: #000;
+
+    --bg-article: #252525;
+
+    --color-button-bg: #fff;
+    --color-button-switch: #000;
+}

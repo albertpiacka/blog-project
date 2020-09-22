@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+// 1. Configuration and helpers
+@import
+  'abstracts/variables',
+  'abstracts/functions',
+  'abstracts/mixins';
+
+// 2. Breakpoints / media-queries
+@import
+  'breakpoints/breakpoints';
+
+// 3. Base stuff
+@import
+  'base/base',
+  'base/animations',
+  'base/typography';
+
+// 4. Components of page, buttons
+@import
+  // 'components/side-menu',
+  'components/header',
+  'components/main',
+  'components/article',
+  'components/side-menu',
+  'components/toggle-button';
+
+// 5. Page-specific styles
+@import
+  'pages/gallery',
+  'pages/home',
+  'pages/posts';
+
+

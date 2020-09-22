@@ -1,0 +1,200 @@
+// -----------------------------------------------------------------------------
+// This file contains side menu.
+// -----------------------------------------------------------------------------
+
+// Styles below are for translate3d animated menu, 
+// which works good until around 900px. After reaching this point,
+// the layout has to be either changed or we switch to secondary menu
+// (simple pop-up)
+
+// .main {
+//   position: relative;
+//   transition: $transition;
+//   padding: 1em;
+// }
+
+// .side-menu {
+//   color: #fff;
+//   background-color: #aaa;
+//   padding: 15px 25px;
+//   overflow-y: auto; // scroll shows when needed
+
+//   // positions the menu on reveal
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+  
+//   height: 100%;
+//   width: $side-menu-width;
+  
+//   transform: translate3d(-100%, 0, 0); // hides menu
+//   transition: $transition;
+  
+// }
+
+
+// // Show state styles (menu is showing)
+// .menu-active {  
+
+//   .main {
+//     // moves page to right
+//     transform: translate3d($side-menu-width, 0, 0);
+//     max-width: 70%;
+//     margin: auto;
+//     .articles {
+//         article {
+//             &:nth-of-type(even){ 
+//                 top: 0;
+//                 left: 0;
+//                 box-shadow: none;
+//             }
+//         }
+//         @media (max-width: 690px){
+//           margin: 0;
+//       } 
+//     }
+//   }
+  
+//   .side-menu {
+//     // moves menu to right, revealing it
+//     transform: translate3d(0,0,0);
+//   }
+
+// }
+
+// -----------------------------------------------------------------------------
+// Secondary menu
+// -----------------------------------------------------------------------------
+
+.side-menu {
+  color: $color-side-menu-text;
+  background-color: $color-side-menu-bg;
+  overflow-y: auto; // scroll shows when needed
+  overflow-x: hidden;
+
+  // positions the menu on reveal
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: -100%;
+  
+  height: 100%;
+  width: $side-menu-width;
+
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+
+  .account-info {
+    width: 6em;
+    height: 6em;
+    border-radius: 50%;
+    border: .1em solid $color-side-menu-text;
+    margin: 2em auto;
+
+    cursor: pointer;
+  }
+
+  .content-container {
+    padding: 1em;
+  }
+
+  .articles {
+    article {
+      width: 100%;
+      height: 30vh;
+      @extend %article;
+      .img-container {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        margin: 0;
+        z-index: 1;
+      }
+
+      h2 {
+        position: relative;
+        top: 1em;
+        left: .5em;
+        z-index: 2;
+      }
+    }
+  }
+
+  .ul-menu {
+    li {
+      margin: .5em 0;
+      position: relative;
+      cursor: pointer;
+      transition: transform, all .3s ease;
+      a {
+        display: block;
+      }
+    }
+
+    .selected-page {
+      background: $color-bg-page;
+      padding: .5em 0 .5em .2em;
+      border-radius: .3em;
+      left: -2em;
+    }
+
+    li:not(.selected-page):hover {
+      transform: translateX(-2em);
+      background: $color-bg-page;
+      padding: .5em 0 .5em .2em;
+      border-radius: .3em;
+    }
+  }
+  
+}
+
+// Show state styles (menu is showing)
+.menu-active {  
+
+  .side-menu {
+    animation: .5s slideRight ease forwards;
+  }
+
+  #strip-menu i {
+    animation: .5s menuRight ease forwards;
+  }
+
+
+  @keyframes slideRight {
+    0%{left: -100%};
+    100%{left: 0};
+  }
+
+  @keyframes menuRight {
+    0%{left: 0.5em};
+    100%{left: 5em};
+  }
+
+}
+
+.menu-inactive {
+
+  .side-menu {
+    animation: .5s slideLeft ease forwards;
+  }
+
+  #strip-menu i {
+    animation: .4s menuLeft ease forwards;
+  }
+
+  @keyframes slideLeft {
+    0%{left: 0%};
+    100%{left: -100%};
+  }
+
+  @keyframes menuLeft {
+    0%{left: 5em};
+    100%{left: .2em};
+  }
+
+}
+
+
