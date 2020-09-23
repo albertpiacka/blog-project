@@ -4,8 +4,10 @@
 
     $message = $_POST['message'];
 
-    $id = $DB->query("INSERT INTO posts (text)
+    if(isset($message)){
+        $id = $DB->query("INSERT INTO posts (text)
               VALUES ('$message')");
+    } else return;
 
     if($id){
         $json = json_encode($message);

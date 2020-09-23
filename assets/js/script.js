@@ -72,7 +72,7 @@ if(post){
 
 
 var form = document.getElementById('myForm'),
-    textarea = document.querySelector('textarea'),
+    textarea = document.getElementById('message'),
     posts = document.getElementById('posts');
 
 if(form){
@@ -102,3 +102,4 @@ if(form){
     
     });
 }
+

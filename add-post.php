@@ -3,26 +3,26 @@
                 <div class="form-container">
                     <form id="myForm" action="_inc/new-post.php" method="post">
                         <textarea name="message" id="message" cols="30" rows="10" placeholder="Type something"></textarea>
-                        <input type="submit" placeholder="Send">
+                        <input type="submit">
                     </form>
 
-                    <div>
-                        <ul id="posts">
-                            <?php
-                                $posts = $DB->query("SELECT * FROM posts");
+                    <ul id="posts">
+                        <?php 
+                            $query = $DB->query("SELECT * FROM posts");
 
-                                foreach($posts as $post){
-                                    echo '<li>';
-                                    echo $post['text'];
-                                    echo '<li>';
-                                }
+                            $posts = $query->fetchAll();
+                            
+                            foreach($posts as $post){
+                                echo '<li>';
+                                echo $post['text'];
+                                echo '</li>';
+                            }
 
-                            ?>
-                        </ul>
-                    </div>
+                        ?>
+                    </ul>
                 </div>
-			</div>
 
+			</div>
 		</div>
 
 <?php include_once('_partials/footer.php') ?>	
