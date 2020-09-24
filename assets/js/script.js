@@ -70,10 +70,10 @@ if(post){
 //     postSecondary.classList.toggle('slide-down');
 // });
 
-
 var form = document.getElementById('myForm'),
-    textarea = document.getElementById('message'),
-    posts = document.getElementById('posts');
+posts = document.querySelector('.posts'),
+textarea = document.getElementById('message'),
+titlearea = document.getElementById('title');
 
 if(form){
     form.addEventListener('submit', function(e){
@@ -90,16 +90,28 @@ if(form){
             return response.text();
         }).then(function(text){
             var post = JSON.parse(text);
-            var newPost = document.createElement('li');
-    
-            newPost.innerHTML = post;
-    
+
+            var newPost = document.createElement('div');
+            var title = document.createElement('div');
+            var text = document.createElement('div');
+
+            newPost.setAttribute('class', 'post');
+            title.setAttribute('class', 'title');
+            text.setAttribute('class', 'text');
+
+            title.innerText = post[1];
+            text.innerText = post[0];
+            newPost.append(title, text);
+            newPost.classList.add('fadeIn');
+
             posts.append(newPost);
+
             textarea.value = '';
+            titlearea.value = '';
+
         }).catch(function(response){
             return;
         });
     
     });
 }
-

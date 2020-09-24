@@ -1,0 +1,50 @@
+#myForm {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 50%;
+    margin: 2em auto;
+    input, textarea {
+        margin: .5em;
+        padding: .5em;
+        border-radius: 1em;
+    }
+
+    input:nth-of-type(1) {
+        padding: 1em;
+    }
+
+    input[type="submit"]{
+        width: 50%;
+        margin: auto;
+        cursor: pointer;
+    }
+
+    *, *:focus {
+        border: none;
+        outline: none;
+    }
+}
+
+.post {
+    background: var(--bg-article);
+    color: $color-article;
+    border-radius: 1em;
+    position: relative;
+    margin: 2em auto;
+    padding: 1em;
+    width: 70%;
+}
+
+.fadeIn {
+	animation: fadeIn .5s ease forwards;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
