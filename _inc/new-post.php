@@ -5,8 +5,7 @@
     $message = $_POST['message'];
     $title = $_POST['title'];
 
-    $id = $DB->query("INSERT INTO posts (text, title)
-              VALUES ('$message', '$title')");
+    $id = $DB->query("INSERT INTO posts (text, title) VALUES ('$message', '$title')");
 
     if($id){
         $json = json_encode([$message, $title]);

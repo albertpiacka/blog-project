@@ -1,6 +1,13 @@
 <?php
 	require('_inc/config.php');
+
+	function return_string($string) {
+		return str_replace('-', ' ', $string);
+	}
+
 	$page_name = basename($_SERVER['SCRIPT_NAME'], '.php');
+
+	$new_name = return_string($page_name);
 
 	if($page_name == 'index') $page_name = 'home';
 
@@ -16,7 +23,7 @@
 		<link rel="stylesheet" href="assets/css/main.css">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title><?php echo ucfirst($page_name); ?> / Chefly</title>
+		<title><?php echo ucfirst($new_name); ?> / Chefly</title>
 		<!--[if lt IE 9]>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
@@ -39,7 +46,11 @@
 							foreach( $pages as $file ) {
 
 								$page = basename($file, '.php');
-								if($page == 'index') $page = 'home';
+								if($page == 'index') {
+									$page = 'home';
+								} else if($page == 'add-post') {
+									$page = 'add post';
+								}
 
 								if($page_name == $page ) echo '<li class="selected-page">'.ucfirst($page).'</li>';
 								else echo '<li><a href="'.$file.'">'.ucfirst($page).'</a></li>';

@@ -13,7 +13,7 @@ $whoops->register();
 $base_url = 'http://localhost/blog-project/';
 
 //Connect to DB
-$config =[
+$config = [
 
     'db' => [
         'db_type' => 'mysql',
