@@ -8,6 +8,8 @@
             margin: .5em;
             padding: .5em;
             border-radius: 1em;
+            background: var(--bg-article);
+            color: $color-article; 
         }
     
         input:nth-of-type(1) {
