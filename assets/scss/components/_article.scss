@@ -42,27 +42,14 @@
     grid-template-columns: 1fr 1fr;
     width: 90%;
     margin: auto;
-    .author {
+    .post-author {
         text-align: right;
-        margin: 1em 0;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        i {
-            font-size: 1.5em;
+        padding: 2em 0;
+        span:nth-of-type(1){
+            color: darken($color-article, 20%);
         }
-
         .author-name {
-            span {
-                display: block;
-            }
-
-            span:nth-of-type(1){
-                color: darken($color-article, 20%);
-            }
-
-            .name {
-                cursor: pointer;
-            }
+            display: block;
         }
     }
 }

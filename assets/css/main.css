@@ -187,23 +187,15 @@ header #logo2 path {
   width: 90%;
   margin: auto;
 }
-.header-container .author {
+.header-container .post-author {
   text-align: right;
-  margin: 1em 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  padding: 2em 0;
 }
-.header-container .author i {
-  font-size: 1.5em;
-}
-.header-container .author .author-name span {
-  display: block;
-}
-.header-container .author .author-name span:nth-of-type(1) {
+.header-container .post-author span:nth-of-type(1) {
   color: #c7c7c7;
 }
-.header-container .author .author-name .name {
-  cursor: pointer;
+.header-container .post-author .author-name {
+  display: block;
 }
 
 .side-menu {
