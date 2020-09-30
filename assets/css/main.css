@@ -478,6 +478,9 @@ html.transition *:after {
 .posts .post-section .flexed {
   width: 95%;
 }
+.posts .post-section .flexed .comments {
+  display: block;
+}
 .posts .post-section .post {
   margin: 1em;
   position: absolute;
@@ -558,6 +561,30 @@ html.transition *:after {
 }
 .posts .post-section .slide-down {
   height: 17.2em;
+}
+
+.comments {
+  display: none;
+}
+.comments .comment {
+  padding: 4em;
+}
+.comments .comment-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.comments .comment-header .comment-author {
+  text-align: left;
+}
+.comments .comment-header .comment-author i {
+  font-size: 150%;
+  margin-right: 0.3em;
+}
+.comments .comment-header .comment-date {
+  text-align: right;
+}
+.comments .comment-body p[type=comment] {
+  margin: 2em 0;
 }
 
 /*# sourceMappingURL=main.css.map */

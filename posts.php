@@ -44,6 +44,24 @@
 									Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 								</p>
 							</div>
+
+							<div class="comments">
+								<div class="comment" id="1">
+									<div class="comment-header">
+										<div class="comment-author">
+											<i class="fa fa-user"></i>
+											<a href="#">Name</a>
+										</div>
+										<div class="comment-date">
+											<span>12 July 2019</span>
+										</div>
+									</div>	
+
+									<div class="comment-body">
+										<p type="comment">Nejaké sračky, akože komenty..</p>
+									</div>
+								</div>
+							</div>
 						</div>
 
 						<div class="post post-2">
@@ -89,21 +107,6 @@
 								</p>
 							</div>
 
-							<div class="comments">
-								<div class="comment-header">
-									<div class="comment-author">
-										<i class="fa fa-user"></i>
-										<a href="#">Name</a>
-									</div>
-									<div class="comment-date">
-										<span>12 July 2019</span>
-									</div>
-								</div>	
-
-								<div class="comment-body">
-									<p>Nejaké sračky, akože komenty..</p>
-								</div>
-							</div>
 						</div>
 					</div>
 

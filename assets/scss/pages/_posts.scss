@@ -17,6 +17,9 @@
 
         .flexed {
             width: 95%;
+            .comments {
+                display: block;
+            }
         }
 
         .post {
@@ -111,6 +114,35 @@
         .slide-down {
             height: 17.2em;
             // overflow: auto; add later
+        }
+
+        
+    }
+}
+
+.comments {
+    display: none;
+    .comment {
+        padding: 4em;
+    }
+    .comment-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        .comment-author {
+            text-align: left;
+            i {
+                font-size: 150%;
+                margin-right: .3em;
+            }
+        }
+        .comment-date {
+            text-align: right;
+        }
+    }
+
+    .comment-body {
+        p[type="comment"] {
+            margin: 2em 0;
         }
     }
 }
