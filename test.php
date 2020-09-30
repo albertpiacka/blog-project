@@ -2,8 +2,10 @@
 
 				<section id="post-wrap">
                     <header>
-                        <h1>How to cook bull balls</h1>
-                        <div class="post-date">12 July 2019</div>
+                        <div class="title">
+                            <h1>How to cook bull balls</h1>
+                            <div class="post-date">12 July 2019</div>
+                        </div>
                         <div class="author">
                             <span>Author</span>
                             <span class="author-name">Palo</span>
