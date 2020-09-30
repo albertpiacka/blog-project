@@ -11,6 +11,10 @@
             background: var(--bg-article);
             color: $color-article; 
         }
+
+        textarea {
+            padding: 1em;
+        }
     
         input:nth-of-type(1) {
             padding: 1em;
