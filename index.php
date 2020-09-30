@@ -12,7 +12,7 @@
 								<i class="far fa-user"></i>
 								<div class="author-name">
 									<span>Author</span>
-									<span>John</span>
+									<span class="name">John</span>
 								</div>
 							</div>
 						</div>
@@ -31,7 +31,7 @@
 								<i class="far fa-user"></i>
 								<div class="author-name">
 									<span>Author</span>
-									<span>Jane</span>
+									<span class="name">Jane</span>
 								</div>
 							</div>	
 

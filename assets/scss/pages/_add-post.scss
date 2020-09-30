@@ -24,6 +24,10 @@
             width: 50%;
             margin: auto;
             cursor: pointer;
+            transition: background .3s ease;
+            &:hover {
+                background: $color-bg-btn;
+            }
         }
     
         *, *:focus {

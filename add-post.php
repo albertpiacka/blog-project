@@ -1,6 +1,7 @@
 <?php include_once('_partials/header.php') ?>
 
                 <div class="form-container">
+
                     <!-- formular na spracovanie udajov -->
                     <form id="myForm" action="_inc/new-post.php" method="post">
                         <input name="title" type="text" placeholder="Title" id="title">

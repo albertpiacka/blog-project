@@ -159,11 +159,12 @@ header #logo2 path {
   width: 90%;
   margin: auto 0;
   text-align: left;
+  cursor: pointer;
 }
 .posts .post-section .post p, .home .main .articles article p, .side-menu .articles article p {
   line-height: 1.6em;
   width: 90%;
-  margin: 0 auto;
+  margin: 1em auto;
 }
 .posts .post-section .post .img-container, .home .main .articles article .img-container, .side-menu .articles article .img-container {
   border-radius: 1em;
@@ -203,6 +204,9 @@ header #logo2 path {
 }
 .header-container .author .author-name span:nth-of-type(1) {
   color: #c7c7c7;
+}
+.header-container .author .author-name .name {
+  cursor: pointer;
 }
 
 .side-menu {
@@ -397,6 +401,10 @@ html.transition *:after {
   width: 50%;
   margin: auto;
   cursor: pointer;
+  transition: background 0.3s ease;
+}
+.add-post #myForm input[type=submit]:hover {
+  background: #F49F2C;
 }
 .add-post #myForm *, .add-post #myForm *:focus {
   border: none;

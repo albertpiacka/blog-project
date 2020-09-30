@@ -8,12 +8,13 @@
         width: 90%;
         margin: auto 0;
         text-align: left;
+        cursor: pointer;
     }
 
     p {
         line-height: 1.6em;
         width: 90%;
-        margin: 0 auto;
+        margin: 1em auto;
     }
 
     .img-container {
@@ -57,6 +58,10 @@
 
             span:nth-of-type(1){
                 color: darken($color-article, 20%);
+            }
+
+            .name {
+                cursor: pointer;
             }
         }
     }
