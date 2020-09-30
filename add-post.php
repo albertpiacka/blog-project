@@ -18,11 +18,11 @@
                             foreach($posts as $post){
                             echo '<div class="post">';
                             echo     '<div class="title">';
-                            echo     '<p>'.$post['title'].'</p>';
+                            echo        '<h3>'.$post['title'].'</h3>';
                             echo     '</div>';
 
                             echo     '<div class="text">';
-                            echo     '<p>'.$post['text'].'</p>';
+                            echo        '<p>'.$post['text'].'</p>';
                             echo     '</div>';
                             echo '</div>';
                             }
