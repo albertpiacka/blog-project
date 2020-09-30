@@ -6,7 +6,7 @@
                             <h1>How to cook bull balls</h1>
                             <div class="post-date">12 July 2019</div>
                         </div>
-                        <div class="author">
+                        <div class="post-author">
                             <span>Author</span>
                             <span class="author-name">Palo</span>
                         </div>
@@ -24,7 +24,7 @@
                         <div class="comments">
                             <div class="comment">
                                 <div class="comment-header">
-                                    <div class="author">
+                                    <div class="comment-author">
                                         <i class="fas fa-user-alt"></i>
                                         <a href="#">Filip</a>
                                     </div>
