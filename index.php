@@ -7,15 +7,16 @@
 				<section class="articles">
 					<article>
 						<div class="header-container">
-							<h3>#Poached madness</h2>
-							<div class="author">
-								<i class="far fa-user"></i>
-								<div class="author-name">
-									<span>Author</span>
-									<span class="name">John</span>
-								</div>
+							<div class="title">
+								<h1>#Poached madness</h1>
+							</div>
+
+							<div class="post-author">
+								<span>Author</span>
+								<span class="author-name">Jane</span>
 							</div>
 						</div>
+
 						<div class="img-container">
 							<div style="background-image: url('assets/img/img-1.jpg')" class="img img1"></div>
 						</div>
@@ -26,16 +27,16 @@
 
 					<article>
 						<div class="header-container">
-							<h3>How to ferment anything</h2>
-							<div class="author">
-								<i class="far fa-user"></i>
-								<div class="author-name">
-									<span>Author</span>
-									<span class="name">Jane</span>
-								</div>
-							</div>	
+							<div class="title">
+								<h1>How to ferment anything</h1>
+							</div>
 
+							<div class="post-author">
+								<span>Author</span>
+								<span class="author-name">John</span>
+							</div>
 						</div>
+
 						<div class="img-container">
 							<div style="background-image: url('assets/img/img-2.jpg')" class="img img2"></div>
 						</div>

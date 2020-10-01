@@ -27,6 +27,9 @@
             position: absolute;
             top: 0;
             @extend %article;
+            h1 {
+                font-size: 2em;
+            }
             
             .img-container {
                 width: 100%;

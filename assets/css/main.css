@@ -152,12 +152,6 @@ header #logo2 path {
   position: relative;
   margin: 2em auto;
 }
-.posts .post-section .post h3, .home .main .articles article h3, .side-menu .articles article h3 {
-  width: 90%;
-  margin: auto 0;
-  text-align: left;
-  cursor: pointer;
-}
 .posts .post-section .post p, .home .main .articles article p, .side-menu .articles article p {
   line-height: 1.6em;
   width: 90%;
@@ -196,6 +190,16 @@ header #logo2 path {
 }
 .header-container .post-author .author-name {
   display: block;
+}
+.header-container .title {
+  padding: 2em 0;
+}
+.header-container .title h1 {
+  width: 100%;
+  font-size: 1.5em;
+  margin: auto 0;
+  text-align: left;
+  cursor: pointer;
 }
 
 .side-menu {
@@ -485,6 +489,9 @@ html.transition *:after {
   margin: 1em;
   position: absolute;
   top: 0;
+}
+.posts .post-section .post h1 {
+  font-size: 2em;
 }
 .posts .post-section .post .img-container {
   width: 100%;

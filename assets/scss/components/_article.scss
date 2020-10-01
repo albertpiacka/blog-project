@@ -4,12 +4,6 @@
     border-radius: 1em;
     position: relative;
     margin: 2em auto;
-    h3 {
-        width: 90%;
-        margin: auto 0;
-        text-align: left;
-        cursor: pointer;
-    }
 
     p {
         line-height: 1.6em;
@@ -50,6 +44,16 @@
         }
         .author-name {
             display: block;
+        }
+    }
+    .title {
+        padding: 2em 0;
+        h1 {
+            width: 100%;
+            font-size: 1.5em;
+            margin: auto 0;
+            text-align: left;
+            cursor: pointer;
         }
     }
 }

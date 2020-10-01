@@ -13,4 +13,5 @@
         die($json); //tento json obsahuje vsetko co sa odosiela , pozri vyssie.. v javascripte k hodnotam pristupujeme pomocou indexu
     }
 
-
+    
+    
