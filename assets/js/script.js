@@ -68,19 +68,20 @@ slidingMenu.run();
 //*****************************************************/
 var slidingPost = (function(){
 
-    var post = document.querySelector('.post-wrapper'),
+    var post = document.querySelector('.post'),
+        postWrapper = document.querySelector('.post-wrapper'),
         textarea = document.querySelector('textarea'),
         submit = document.querySelector('input'),
-        postPrimary = document.querySelector('.primary'),
-        postSecondary = document.querySelector('.secondary');
+        menuPrimary = document.querySelector('.primary'),
+        menuSecondary = document.querySelector('.secondary');
 
     return {
         run: function(){
             if(post){
                 post.addEventListener('click', function(e){
                     if(e.target != textarea){
-                        this.classList.toggle('flexed');
-                        postPrimary.classList.toggle('unflexed');
+                        postWrapper.classList.toggle('flexed');
+                        menuPrimary.classList.toggle('unflexed');
                     }
                     
                 });
