@@ -30,11 +30,19 @@ $DB = new PDO(
 
     "{$config['db']['db_type']}:host={$config['db']['server']};dbname={$config['db']['db_name']}",
     $config['db']['username'], $config['db']['password']
-
+ 
 );
 
-function is_ajax()
-{
-	return ( !empty($_SERVER['HTTP_X_REQUESTED_WITH']) &&
-		 strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) === 'xmlhttprequest' );
+function split_array($array){
+    $newArray = array_chunk($array, 100);
+    foreach($newArray as $array){
+        $finalArr = implode(' ', $array);
+        echo '<div class="post-text">';
+        echo    '<p>'.$finalArr.'</p>';
+        echo '</div>';
+    }
 }
+
+
+
+

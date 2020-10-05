@@ -64,35 +64,35 @@ var slidingMenu = (function(){
 
 slidingMenu.run();
 
-//Post slider
-//*****************************************************/
-var slidingPost = (function(){
+// Post slider
+// *****************************************************/
+// var slidingPost = (function(){
 
-    var post = document.querySelector('.post'),
-        postWrapper = document.querySelector('.post-wrapper'),
-        textarea = document.querySelector('textarea'),
-        submit = document.querySelector('input'),
-        menuPrimary = document.querySelector('.primary'),
-        menuSecondary = document.querySelector('.secondary');
+//     var post = document.querySelector('.post'),
+//         postWrapper = document.querySelector('.post-wrapper'),
+//         textarea = document.querySelector('textarea'),
+//         submit = document.querySelector('input'),
+//         menuPrimary = document.querySelector('.primary'),
+//         menuSecondary = document.querySelector('.secondary');
 
-    return {
-        run: function(){
-            if(post){
-                post.addEventListener('click', function(e){
-                    if(e.target != textarea){
-                        postWrapper.classList.toggle('flexed');
-                        menuPrimary.classList.toggle('unflexed');
-                    }
+//     return {
+//         run: function(){
+//             if(post){
+//                 post.addEventListener('click', function(e){
+//                     if(e.target != textarea){
+//                         postWrapper.classList.toggle('flexed');
+//                         menuPrimary.classList.toggle('unflexed');
+//                     }
                     
-                });
-            }
-        }
-    }
+//                 });
+//             }
+//         }
+//     }
 
-}());
+// }());
 
-slidingPost.run();
+// slidingPost.run();
 
-//Create post - fetch data from new-post.php
-//*****************************************************/
-createPost.createPost();
+// Create post - fetch data from new-post.php
+// *****************************************************/
+// createPost.createPost();

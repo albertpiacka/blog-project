@@ -3,152 +3,62 @@
 // -----------------------------------------------------------------------------
 
 .posts {
-    .post-section {
-        display: flex;
-        flex: row wrap;
-        align-items: flex-start;
-        width: 80%;
-        margin: auto;
-        .post-wrapper {
-            width: 75%;
-            transition: all .5s ease;
-            position: relative;
-        }
-
-        .flexed {
-            width: 95%;
-            .comments {
-                display: block;
-            }
-        }
-
+    .posts-wrapper {
+        padding: 2em;
         .post {
-            margin: 1em;
-            position: absolute;
-            top: 0;
-            @extend %article;
-            h1 {
-                font-size: 2em;
-            }
-            
+            background-color: var(--bg-article);
+            color: $color-article;
+        
+            border-radius: 1em;
+        
+            width: 80%;
+            margin: 2em auto;
+        
             .img-container {
                 width: 100%;
-            }
-
-            .paragraphs {
-                text-align: left;
-                padding: 1em;
-            }
-
-            &:first-of-type {
-                z-index: 2;
-            }
-            
-        }
-
-        .secondary {
-            display: none;
-        }
-
-        @media (max-width: 1050px){
-            display: block;
-            width: 100%;
-            flex-direction: column;
-            margin: auto;
-            .primary {
-                display: none;
-            }
-
-            .secondary {
-                display: block;
-                height: 5em;
+                height: 20em;
                 overflow: hidden;
-            }
-
-            .post-wrapper {
-                width: 100%;
-            }
-        }
-
-        .post-menu {
-            margin: 1em;
-            padding: 1em;
-            background: var(--bg-article);
-            color: $color-article;
-            border-radius: 1em;
-            width: 25%;
-            transition: all .5s ease;
-
-            @media (max-width: 1050px){
-                width: 100%;
-                margin: auto;
-            }
-    
-            .post-thumbnail {
-                padding: 1em;
-                margin: .5em auto;
-                border-radius: 2em;
-                background: var(--bg);
-                color: var(--color-text);
-                border: none;
-                outline: none;
-            }
-
-            .search-box {
-                margin: .5em auto;
-                text-align: center;
-                input {
-                    padding: 1em;
-                    border-radius: 2em;
-                    border: none;
-                    outline: none;
+                border-radius: 1em 1em 0 0;
+                .img {
                     width: 100%;
+                    height: 100%;
+                    border-radius: 1em 1em 0 0;
+                    transition: 1s transform ease;
+                    background: url('../img/img-1.jpg') 30% 50%;
+                    &:hover {
+                        transform: scale(1.2);
+                    }
+                }
+            }
+
+            .post-container {
+                padding: 1em;
+            }
+        
+            .post-header {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                .post-author {
+                    text-align: right;
+                }
+                border-bottom: 1px dotted #aaa;
+            }
+        
+            .post-body {
+                .post-text {
+                    p {
+                        line-height: 1.7em;
+                        width: 70%;
+                        clear: both;
+                        padding: 1em;
+                    }  
                 }
             }
         }
-
-        .unflexed {
-            width: 5%;
-            .post-thumbnail {
-                color: transparent;
-            }
-        }
-
-        .slide-down {
-            height: 17.2em;
-            // overflow: auto; add later
-        }
-
-        
     }
 }
 
-.comments {
-    display: none;
-    .comment {
-        padding: 4em;
-    }
-    .comment-header {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        .comment-author {
-            text-align: left;
-            i {
-                font-size: 150%;
-                margin-right: .3em;
-            }
-        }
-        .comment-date {
-            text-align: right;
-        }
-    }
 
-    .comment-body {
-        p[type="comment"] {
-            margin: 2em 0;
-        }
-    }
-}
 
 
 

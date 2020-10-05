@@ -18,6 +18,21 @@ html[data-theme=dark] {
   --color-button-switch: #000;
 }
 
+p:before,
+p:after {
+  content: "";
+  display: table;
+}
+
+p:after {
+  clear: both;
+}
+
+p {
+  zoom: 1;
+  /* For IE 6/7 (trigger hasLayout) */
+}
+
 @media (max-width: 950px) {
   .articles article {
     max-width: 600px;
@@ -145,33 +160,33 @@ header #logo2 path {
   left: 0.2em;
 }
 
-.posts .post-section .post, .home .main .articles article, .side-menu .articles article {
+.home .main .articles article, .side-menu .articles article {
   background: var(--bg-article);
   color: #fafafa;
   border-radius: 1em;
   position: relative;
   margin: 2em auto;
 }
-.posts .post-section .post p, .home .main .articles article p, .side-menu .articles article p {
+.home .main .articles article p, .side-menu .articles article p {
   line-height: 1.6em;
   width: 90%;
   margin: 1em auto;
 }
-.posts .post-section .post .img-container, .home .main .articles article .img-container, .side-menu .articles article .img-container {
+.home .main .articles article .img-container, .side-menu .articles article .img-container {
   border-radius: 1em;
   overflow: hidden;
   width: 90%;
   height: 20em;
   margin: auto;
 }
-.posts .post-section .post .img, .home .main .articles article .img, .side-menu .articles article .img {
+.home .main .articles article .img, .side-menu .articles article .img {
   width: 100%;
   height: 100%;
   background-position: center;
   background-size: cover;
   transition: 1s transform ease;
 }
-.posts .post-section .post .img:hover, .home .main .articles article .img:hover, .side-menu .articles article .img:hover {
+.home .main .articles article .img:hover, .side-menu .articles article .img:hover {
   transform: scale(1.2);
 }
 
@@ -467,131 +482,48 @@ html.transition *:after {
   }
 }
 
-.posts .post-section {
-  display: flex;
-  flex: row wrap;
-  align-items: flex-start;
-  width: 80%;
-  margin: auto;
+.posts .posts-wrapper {
+  padding: 2em;
 }
-.posts .post-section .post-wrapper {
-  width: 75%;
-  transition: all 0.5s ease;
-  position: relative;
-}
-.posts .post-section .flexed {
-  width: 95%;
-}
-.posts .post-section .flexed .comments {
-  display: block;
-}
-.posts .post-section .post {
-  margin: 1em;
-  position: absolute;
-  top: 0;
-}
-.posts .post-section .post h1 {
-  font-size: 2em;
-}
-.posts .post-section .post .img-container {
-  width: 100%;
-}
-.posts .post-section .post .paragraphs {
-  text-align: left;
-  padding: 1em;
-}
-.posts .post-section .post:first-of-type {
-  z-index: 2;
-}
-.posts .post-section .secondary {
-  display: none;
-}
-@media (max-width: 1050px) {
-  .posts .post-section {
-    display: block;
-    width: 100%;
-    flex-direction: column;
-    margin: auto;
-  }
-  .posts .post-section .primary {
-    display: none;
-  }
-  .posts .post-section .secondary {
-    display: block;
-    height: 5em;
-    overflow: hidden;
-  }
-  .posts .post-section .post-wrapper {
-    width: 100%;
-  }
-}
-.posts .post-section .post-menu {
-  margin: 1em;
-  padding: 1em;
-  background: var(--bg-article);
+.posts .posts-wrapper .post {
+  background-color: var(--bg-article);
   color: #fafafa;
   border-radius: 1em;
-  width: 25%;
-  transition: all 0.5s ease;
+  width: 80%;
+  margin: 2em auto;
 }
-@media (max-width: 1050px) {
-  .posts .post-section .post-menu {
-    width: 100%;
-    margin: auto;
-  }
-}
-.posts .post-section .post-menu .post-thumbnail {
-  padding: 1em;
-  margin: 0.5em auto;
-  border-radius: 2em;
-  background: var(--bg);
-  color: var(--color-text);
-  border: none;
-  outline: none;
-}
-.posts .post-section .post-menu .search-box {
-  margin: 0.5em auto;
-  text-align: center;
-}
-.posts .post-section .post-menu .search-box input {
-  padding: 1em;
-  border-radius: 2em;
-  border: none;
-  outline: none;
+.posts .posts-wrapper .post .img-container {
   width: 100%;
+  height: 20em;
+  overflow: hidden;
+  border-radius: 1em 1em 0 0;
 }
-.posts .post-section .unflexed {
-  width: 5%;
+.posts .posts-wrapper .post .img-container .img {
+  width: 100%;
+  height: 100%;
+  border-radius: 1em 1em 0 0;
+  transition: 1s transform ease;
+  background: url("../img/img-1.jpg") 30% 50%;
 }
-.posts .post-section .unflexed .post-thumbnail {
-  color: transparent;
+.posts .posts-wrapper .post .img-container .img:hover {
+  transform: scale(1.2);
 }
-.posts .post-section .slide-down {
-  height: 17.2em;
+.posts .posts-wrapper .post .post-container {
+  padding: 1em;
 }
-
-.comments {
-  display: none;
-}
-.comments .comment {
-  padding: 4em;
-}
-.comments .comment-header {
+.posts .posts-wrapper .post .post-header {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  border-bottom: 1px dotted #aaa;
 }
-.comments .comment-header .comment-author {
-  text-align: left;
-}
-.comments .comment-header .comment-author i {
-  font-size: 150%;
-  margin-right: 0.3em;
-}
-.comments .comment-header .comment-date {
+.posts .posts-wrapper .post .post-header .post-author {
   text-align: right;
 }
-.comments .comment-body p[type=comment] {
-  margin: 2em 0;
+.posts .posts-wrapper .post .post-body .post-text p {
+  line-height: 1.7em;
+  width: 70%;
+  clear: both;
+  padding: 1em;
 }
 
 /*# sourceMappingURL=main.css.map */

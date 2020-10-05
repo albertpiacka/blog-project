@@ -37,3 +37,15 @@ html[data-theme='dark'] {
     --color-button-bg: #fff;
     --color-button-switch: #000;
 }
+
+p:before,
+p:after {
+  content: "";
+  display: table;
+} 
+p:after {
+  clear: both;
+}
+p {
+  zoom: 1; /* For IE 6/7 (trigger hasLayout) */
+}
