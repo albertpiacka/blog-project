@@ -30,9 +30,8 @@
 										echo		'</div>';
 	
 										echo		'<div class="post-body">';
-										echo     		'<div class="post-text">';
-															$str = $post['text'];
-															$oldArr = explode(' ', $str);
+										echo     		'<div class="post-paragraphs">';
+															$oldArr = explode('.', $post['text']);
 															split_array($oldArr);
 										echo     		'</div>';
 										echo 		'</div>';
