@@ -48,9 +48,11 @@
 								$page = basename($file, '.php');
 								if($page == 'index') {
 									$page = 'home';
-								} 
+								} else if($page == 'add-post'){
+									$page = 'add post';
+								}
 
-								if($page_name == $page ) echo '<li class="selected-page">'.ucfirst($page).'</li>';
+								if($new_name == $page ) echo '<li class="selected-page">'.ucfirst($page).'</li>';
 								else echo '<li><a href="'.$file.'">'.ucfirst($page).'</a></li>';
 
 							}
