@@ -5,7 +5,7 @@
 						<!-- tahame udaje z databazy -->
 						<div class="posts-wrapper">
 							<?php 
-								$query = $DB->query("SELECT * FROM posts");
+								$query = $DB->query("SELECT * FROM posts ORDER by id DESC");
 
 								$posts = $query->fetchAll();
 
@@ -32,7 +32,8 @@
 										echo		'<div class="post-body">';
 										echo     		'<div class="post-paragraphs">';
 															$oldArr = explode('.', $post['text']);
-															split_array($oldArr);
+															return_paragraphs($oldArr);
+															print_r(__DIR__);
 										echo     		'</div>';
 										echo 		'</div>';
 										echo 	'</div>';
