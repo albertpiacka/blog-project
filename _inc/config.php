@@ -39,7 +39,6 @@ function split_array($array){
         $finalArr = implode('.', $array);
         echo '<div class="post-text">';
         echo    '<p>'.$finalArr.'.</p>';
-        echo    '<span>Buznaa</span>';
         echo '</div>';
     }
 }
