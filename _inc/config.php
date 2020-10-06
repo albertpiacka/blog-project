@@ -34,11 +34,11 @@ $DB = new PDO(
 );
 
 function split_array($array){
-    $newArray = array_chunk($array, 100);
+    $newArray = array_chunk($array, 10);
     foreach($newArray as $array){
-        $finalArr = implode(' ', $array);
+        $finalArr = implode('.', $array);
         echo '<div class="post-text">';
-        echo    '<p>'.$finalArr.'</p>';
+        echo    '<p>'.$finalArr.'.</p>';
         echo '</div>';
     }
 }
