@@ -96,3 +96,20 @@ slidingMenu.run();
 // Create post - fetch data from new-post.php
 // *****************************************************/
 // createPost.createPost();
+function checkPar(){
+    var postParagraphs = document.querySelectorAll('.post-paragraphs');
+
+    postParagraphs.forEach(postPar => {
+        var parText = postPar.children[postPar.children.length - 1].children.item(0).textContent;
+        postPar.children[postPar.children.length - 1].children.item(0).textContent = parText.slice(0, parText.length - 1);
+
+        if(postPar.children[postPar.children.length - 1].children.item(0).textContent == ""){
+            postPar.children[postPar.children.length - 1].children.item(0).style.display = "none";
+        }
+    });
+
+}
+
+checkPar();
+
+
