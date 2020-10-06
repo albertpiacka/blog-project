@@ -18,9 +18,9 @@
 	<head>
 		<meta charset="utf-8">
 		<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="assets/fontawesome-free-5.13.0-web/css/all.css">
-		<link rel="stylesheet" href="assets/css/normalize.css">
-		<link rel="stylesheet" href="assets/css/main.css">
+		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/fontawesome-free-5.13.0-web/css/all.css">
+		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/css/normalize.css">
+		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/css/main.css">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title><?php echo ucfirst($new_name); ?> / Chefly</title>
