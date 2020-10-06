@@ -9,10 +9,12 @@ $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
-//Global variables
-$base_url = 'http://localhost/blog-project/';
+//Constants 
+define('BASE_URL', 'http://localhost/blog-project/');
+define('APP_PATH', realpath(__DIR__ . '/../') );
 
-//Connect to DB
+
+//Config, connect to DB
 $config = [
 
     'db' => [
@@ -33,7 +35,11 @@ $DB = new PDO(
  
 );
 
-function split_array($array){
+/**
+ * Create paragraph
+ * @param $array
+ */
+function return_paragraphs($array){
     $newArray = array_chunk($array, 10);
     foreach($newArray as $array){
         $finalArr = implode('.', $array);
@@ -41,6 +47,16 @@ function split_array($array){
         echo    '<p>'.$finalArr.'.</p>';
         echo '</div>';
     }
+}
+
+/**
+ * Return new date
+ * @param $date
+ */
+
+function return_date($date){
+    $newDate = explode(' ', $date);
+    return $newDate[0];
 }
 
 
