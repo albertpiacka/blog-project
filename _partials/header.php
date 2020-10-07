@@ -10,6 +10,7 @@
 	$new_name = return_string($page_name);
 
 	if($page_name == 'index') $page_name = 'home';
+	if($new_name == 'index') $new_name = 'home';
 	
 ?>
 
@@ -46,7 +47,7 @@
 							foreach( $pages as $file ) {
 
 								$page = basename($file, '.php');
-								if($page == 'index') {
+								if($page == 'index'){
 									$page = 'home';
 								} else if($page == 'add-post'){
 									$page = 'add post';
