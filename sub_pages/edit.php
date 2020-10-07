@@ -92,7 +92,17 @@
                 </header>
 
                 <section class="edit-section">
-                    
+                    <?php 
+                        $id = $_GET['id'];
+                        $query = $DB->query("SELECT * FROM posts WHERE id = $id");
+                        $post = $query->fetchAll();
+                    ?>
+                    <form id="myForm" action="../_inc/edit-post.php" method="post">
+                        <input name="title" type="text" placeholder="<?php echo $post[0]['title']?>" id="title">
+                        <input name="id" type="hidden" value="<?php echo $_GET['id']?>">
+                        <textarea name="message" id="message" cols="30" rows="10" placeholder="Type something"><?php echo $post[0]['text']?></textarea>
+                        <input type="submit">
+                    </form>
                 </section>
 
 
