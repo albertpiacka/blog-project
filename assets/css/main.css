@@ -110,6 +110,40 @@ body #strip-menu i {
   font-size: 200%;
 }
 
+.add-post #add-form, .delete #delete-form, .edit #edit-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 90%;
+  margin: 2em auto;
+}
+.add-post #add-form input, .delete #delete-form input, .edit #edit-form input, .add-post #add-form textarea, .delete #delete-form textarea, .edit #edit-form textarea {
+  margin: 0.5em;
+  padding: 0.5em;
+  border-radius: 1em;
+  background: var(--bg-article);
+  color: #fafafa;
+}
+.add-post #add-form textarea, .delete #delete-form textarea, .edit #edit-form textarea {
+  padding: 1em;
+}
+.add-post #add-form input:nth-of-type(1), .delete #delete-form input:nth-of-type(1), .edit #edit-form input:nth-of-type(1) {
+  padding: 1em;
+}
+.add-post #add-form input[type=submit], .delete #delete-form input[type=submit], .edit #edit-form input[type=submit] {
+  width: 30%;
+  margin: auto;
+  padding: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.add-post #add-form input[type=submit]:hover, .delete #delete-form input[type=submit]:hover, .edit #edit-form input[type=submit]:hover {
+  background: #F49F2C;
+}
+.add-post #add-form *, .delete #delete-form *, .edit #edit-form * {
+  border: none;
+  outline: none;
+}
+
 header {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -386,59 +420,6 @@ html.transition *:after {
   transition-delay: 0 !important;
 }
 
-.add-post #myForm {
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 50%;
-  margin: 2em auto;
-}
-.add-post #myForm input, .add-post #myForm textarea {
-  margin: 0.5em;
-  padding: 0.5em;
-  border-radius: 1em;
-  background: var(--bg-article);
-  color: #fafafa;
-}
-.add-post #myForm textarea {
-  padding: 1em;
-}
-.add-post #myForm input:nth-of-type(1) {
-  padding: 1em;
-}
-.add-post #myForm input[type=submit] {
-  width: 50%;
-  margin: auto;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.add-post #myForm input[type=submit]:hover {
-  background: #F49F2C;
-}
-.add-post #myForm *, .add-post #myForm *:focus {
-  border: none;
-  outline: none;
-}
-.add-post .post {
-  background: var(--bg-article);
-  color: #fafafa;
-  border-radius: 1em;
-  position: relative;
-  margin: 2em auto;
-  padding: 1em;
-  width: 70%;
-}
-.add-post .fadeIn {
-  animation: fadeIn 0.5s ease forwards;
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 .home .main .articles-heading {
   padding: 0 3em 2em 3em;
   text-align: center;
@@ -503,7 +484,6 @@ html.transition *:after {
   height: 100%;
   border-radius: 1em 1em 0 0;
   transition: 1s transform ease;
-  background: url("../img/img-1.jpg") 30% 50%;
 }
 .posts .posts-wrapper .post .img-container .img:hover {
   transform: scale(1.2);
