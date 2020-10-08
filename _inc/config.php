@@ -59,6 +59,17 @@ function return_date($date){
     return $newDate[0];
 }
 
+/**
+ * Easy login authorization
+ * 
+ */
+
+function can_edit(){
+    $what = isset($_GET['what']) ? $_GET['what'] : false;
+    $add  = isset($_GET['add']) ? $_GET['add'] : false;
+
+    return $what === 'tazkyZabijak98' && $add == 1;
+}
 
 
 
