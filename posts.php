@@ -26,6 +26,7 @@
 										echo     		'</div>';
 										echo 			'<div class="post-author">';
 										echo				'<h2>Author</h2>';
+										echo				'<a href="sub_pages/edit.php?id='.$post['id'].'">Edit</a>';	
 										echo			'</div>';
 										echo		'</div>';
 	
@@ -33,7 +34,6 @@
 										echo     		'<div class="post-paragraphs">';
 															$oldArr = explode('.', $post['text']);
 															return_paragraphs($oldArr);
-															print_r(__DIR__);
 										echo     		'</div>';
 										echo 		'</div>';
 										echo 	'</div>';

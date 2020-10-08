@@ -1,5 +1,5 @@
 <?php
-	require('_inc/config.php');
+	require('../_inc/config.php');
 
 	function return_string($string) {
 		return str_replace('-', ' ', $string);
@@ -10,7 +10,6 @@
 	$new_name = return_string($page_name);
 
 	if($page_name == 'index') $page_name = 'home';
-	if($new_name == 'index') $new_name = 'home';
 	
 ?>
 
@@ -38,27 +37,12 @@
 
 			<div class="content-container">
 				<section class="menu">
-					<h3></h3>
 					<ul class="ul-menu">
-						<?php
-
-							$pages = glob('*.php');
-
-							foreach( $pages as $file ) {
-
-								$page = basename($file, '.php');
-								if($page == 'index'){
-									$page = 'home';
-								} else if($page == 'add-post'){
-									$page = 'add post';
-								}
-
-								if($new_name == $page ) echo '<li class="selected-page">'.ucfirst($page).'</li>';
-								else echo '<li><a href="'.$file.'">'.ucfirst($page).'</a></li>';
-
-							}
-
-						?>
+                        <li class="selected-page">Editing</li>
+                        <li><a href="../add-post.php">Add post</a></li>
+                        <li><a href="../gallery.php">Gallery</a></li>
+                        <li><a href="../index.php">Home</a></li>
+                        <li><a href="../posts.php">Posts</a></li>
 					</ul>
 				</section>
 
@@ -66,14 +50,14 @@
 					<article>
 						<h2>#Poached madness</h2>
 						<div class="img-container">
-							<div style="background-image: url('assets/img/img-1.jpg')" class="img img1"></div>
+							<div style="background-image: url('../assets/img/img-1.jpg')" class="img img1"></div>
 						</div>
 					</article>
 
 					<article>
 						<h2>How to ferment anything</h2>
 						<div class="img-container">
-							<div style="background-image: url('assets/img/img-2.jpg')" class="img img2"></div>
+							<div style="background-image: url('../assets/img/img-2.jpg')" class="img img2"></div>
 						</div>
 					</article>
 				</section>
@@ -92,7 +76,7 @@
 				</div>
 				<header>
 					
-					<?php include('svg-heading.php') ?>
+					<?php include('../_partials/svg-heading.php') ?>
 					<ul>
 						<li>
 							<a href="#"><i class="fas fa-hashtag"></i></a>
@@ -105,4 +89,27 @@
 						<input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
 					</div>
 					
-				</header>
+                </header>
+
+                <div class="form-container">
+                    <?php 
+                        $id = $_GET['id'];
+                        $query = $DB->query("SELECT * FROM posts WHERE id = $id");
+                        $post = $query->fetchAll();
+					?>
+					<form id="edit-form" action="../_inc/delete-post.php" method="post">
+						<input name="title" type="text" value="<?php echo $post[0]['title']?>" id="title" readonly>
+						<input name="id" type="hidden" value="<?php echo $_GET['id']?>">
+						<textarea name="message" id="message" cols="30" rows="20" placeholder="Type something" readonly><?php echo $post[0]['text']?></textarea>
+						<input type="submit">
+					</form>
+				</div>
+
+	    	</div>
+
+                            
+        <script src="<?php echo BASE_URL ?>assets/js/post.module.js"></script>
+		<script src="<?php echo BASE_URL ?>assets/js/script.js"></script>
+
+	</body>
+</html>
