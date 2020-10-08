@@ -1,0 +1,37 @@
+%formStyles {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 90%;
+    margin: 2em auto;
+    input, textarea {
+        margin: .5em;
+        padding: .5em;
+        border-radius: 1em;
+        background: var(--bg-article);
+        color: $color-article; 
+    }
+
+    textarea {
+        padding: 1em;
+    }
+
+    input:nth-of-type(1) {
+        padding: 1em;
+    }
+
+    input[type="submit"]{
+        width: 30%;
+        margin: auto;
+        padding: 1em;
+        cursor: pointer;
+        transition: background .3s ease;
+        &:hover {
+            background: $color-bg-btn;
+        }
+    }
+
+    *, *:focus {
+        border: none;
+        outline: none;
+    }
+}
