@@ -97,7 +97,7 @@
                         $query = $DB->query("SELECT * FROM posts WHERE id = $id");
                         $post = $query->fetchAll();
 					?>
-					<form id="edit-form" action="../_inc/delete-post.php" method="post">
+					<form id="delete-form" action="../_inc/delete-post.php" method="post">
 						<input name="title" type="text" value="<?php echo $post[0]['title']?>" id="title" readonly>
 						<input name="id" type="hidden" value="<?php echo $_GET['id']?>">
 						<textarea name="message" id="message" cols="30" rows="20" placeholder="Type something" readonly><?php echo $post[0]['text']?></textarea>
