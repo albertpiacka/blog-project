@@ -1,10 +1,6 @@
 <?php
 	require('_inc/config.php');
 
-	function return_string($string) {
-		return str_replace('-', ' ', $string);
-	}
-
 	$page_name = basename($_SERVER['SCRIPT_NAME'], '.php');
 
 	$new_name = return_string($page_name);
@@ -38,11 +34,20 @@
 
 			<div class="content-container">
 				<section class="menu">
-					<h3></h3>
 					<ul class="ul-menu">
+
 						<?php
 
+							
 							$pages = glob('*.php');
+
+							$exclude = ['404.php', 'delete.php', 'edit.php'];
+
+							foreach($exclude as $item){
+								if (($key = array_search($item, $pages)) !== false) {
+									unset($pages[$key]);
+								}								
+							}
 
 							foreach( $pages as $file ) {
 
@@ -52,13 +57,48 @@
 								} else if($page == 'add-post'){
 									$page = 'add post';
 								}
-
+								
 								if($new_name == $page ) echo '<li class="selected-page">'.ucfirst($page).'</li>';
 								else echo '<li><a href="'.$file.'">'.ucfirst($page).'</a></li>';
 
 							}
+							
+
+							// if(!can_edit()){
+							// 	$pages = glob('*.php');
+							// 	array_shift($pages);
+							// 	foreach( $pages as $file ) {
+
+							// 		$page = basename($file, '.php');
+							// 		if($page == 'index'){
+							// 			$page = 'home';
+							// 		} else if($page == 'add-post'){
+							// 			$page = 'add post';
+							// 		}
+									
+							// 		if($new_name == $page ) echo '<li class="selected-page">'.ucfirst($page).'</li>';
+							// 		else echo '<li><a href="'.$file.'">'.ucfirst($page).'</a></li>';
+	
+							// 	}
+							// } else {
+							// 	$pages = glob('*.php');
+							// 	foreach( $pages as $file ) {
+
+							// 		$page = basename($file, '.php');
+							// 		if($page == 'index'){
+							// 			$page = 'home';
+							// 		} else if($page == 'add-post'){
+							// 			$page = 'add post';
+							// 		}
+									
+							// 		if($new_name == $page ) echo '<li class="selected-page">'.ucfirst($page).'</li>';
+							// 		else echo '<li><a href="'.$file.'">'.ucfirst($page).'</a></li>';
+	
+							// 	}
+							// }	
 
 						?>
+						
 					</ul>
 				</section>
 
