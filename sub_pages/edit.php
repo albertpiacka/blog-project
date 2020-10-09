@@ -1,15 +1,17 @@
 <?php
 	require('../_inc/config.php');
 
-	function return_string($string) {
-		return str_replace('-', ' ', $string);
-	}
-
 	$page_name = basename($_SERVER['SCRIPT_NAME'], '.php');
 
 	$new_name = return_string($page_name);
 
 	if($page_name == 'index') $page_name = 'home';
+	if($new_name == 'index') $new_name = 'home';
+
+	$item = get_item();
+	if(!$item) show_404();
+
+	$post = $item->fetchAll();
 	
 ?>
 
@@ -76,7 +78,7 @@
 				</div>
 				<header>
 					
-					<?php include('../_partials/svg-heading.php') ?>
+					<?php include_once('../_partials/svg-heading.php') ?>
 					<ul>
 						<li>
 							<a href="#"><i class="fas fa-hashtag"></i></a>
@@ -91,15 +93,19 @@
 					
                 </header>
 
+				
+
                 <div class="form-container">
-                    <?php 
-                        $id = $_GET['id'];
-                        $query = $DB->query("SELECT * FROM posts WHERE id = $id");
-                        $post = $query->fetchAll();
-					?>
 					<form id="edit-form" action="../_inc/edit-post.php" method="post">
+						<div class="flash-message">
+							<?php $msg->display(); ?>
+						</div>
 						<input name="title" type="text" value="<?php echo $post[0]['title']?>" id="title">
 						<input name="id" type="hidden" value="<?php echo $_GET['id']?>">
+						<input name="txtOldLength" id="txtOldLength" type="hidden">
+						<input name="txtNewLength" id="txtNewLength" type="hidden">
+						<input name="titleOldLength" id="titleOldLength" type="hidden">
+						<input name="titleNewLength" id="titleNewLength" type="hidden">
 						<textarea name="message" id="message" cols="30" rows="20" placeholder="Type something"><?php echo $post[0]['text']?></textarea>
 						<input type="submit">
 					</form>
@@ -108,8 +114,4 @@
 	    	</div>
 
                             
-        <script src="<?php echo BASE_URL ?>assets/js/post.module.js"></script>
-		<script src="<?php echo BASE_URL ?>assets/js/script.js"></script>
-
-	</body>
-</html>
+<?php include_once('../_partials/footer.php') ?>
