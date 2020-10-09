@@ -4,6 +4,9 @@
 
 						<!-- tahame udaje z databazy -->
 						<div class="posts-wrapper">
+							<div class="flash-message">
+								<?php $msg->display(); ?>
+							</div>
 							<?php 
 								$query = $DB->query("SELECT * FROM posts ORDER by id DESC");
 
@@ -26,10 +29,8 @@
 										echo     		'</div>';
 										echo 			'<div class="post-author">';
 										echo				'<h2>Author</h2>';
-										if(can_edit()){
-											echo				'<a href="sub_pages/edit.php?id='.$post['id'].'">Edit</a></br>';	
-											echo				'<a href="sub_pages/delete.php?id='.$post['id'].'">Delete</a>';
-										};
+										echo				'<a href="sub_pages/edit.php?id='.$post['id'].'">Edit</a>';	
+										echo				'<a href="sub_pages/delete.php?id='.$post['id'].'">Delete</a>';
 										echo			'</div>';
 										echo		'</div>';
 	
