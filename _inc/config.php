@@ -3,8 +3,13 @@
 //Require stuff
 require 'vendor/autoload.php';
 
+// Start a Session
+if (!session_id()) @session_start();
+	
+// Instantiate the class
+$msg = new \Plasticbrain\FlashMessages\FlashMessages();
+
 //Namespace
-use Medoo\Medoo;
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
@@ -35,6 +40,12 @@ $DB = new PDO(
  
 );
 
+/******************************************
+ * Functions
+ * 
+ ****************************************/
+
+
 /**
  * Create paragraph
  * @param $array
@@ -59,17 +70,68 @@ function return_date($date){
     return $newDate[0];
 }
 
+
 /**
- * Easy login authorization
- * 
+ * Return new string
+ * @param $string
  */
 
-function can_edit(){
-    $what = isset($_GET['what']) ? $_GET['what'] : false;
-    $add  = isset($_GET['add']) ? $_GET['add'] : false;
-
-    return $what === 'tazkyZabijak98' && $add == 1;
+function return_string($string) {
+    return str_replace('-', ' ', $string);
 }
 
+/**
+ * Shows 404.php
+ * @param none
+ */
 
+function show_404(){
+    header('Location: '.BASE_URL.'sub_pages/404.php');
+	die();
+}
+
+/**
+ * Get item by id from $_GET['id']
+ * @param none
+ */
+
+function get_item(){
+    if(!isset($_GET['id']) || empty($_GET['id'])){
+        return false;
+    }
+
+    global $DB;
+
+    $id = $_GET['id'];
+    $item = $DB->query("SELECT * FROM posts WHERE id = $id");
+    
+    if(!$item){
+        return false;
+    } 
+
+    return $item;
+}
+
+/**
+ * Redirects you to previous page
+ * @param $page, $status_code
+ */
+
+function redirect( $page, $status_code = 302 )
+	{
+		global $base_url;
+
+		if ( $page === 'back' )
+		{
+			$location = $_SERVER['HTTP_REFERER'];
+		}
+		else
+		{
+			$page = ltrim($page, '/');
+			$location = "$base_url/$page";
+		}
+
+		header("Location: $location", true, $status_code);
+		die();
+	}
 
