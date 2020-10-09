@@ -2,6 +2,7 @@
     "require": {
         "catfan/medoo": "^1.7",
         "filp/whoops": "^2.7",
-        "phpauth/phpauth": "^1.1"
+        "phpauth/phpauth": "^1.1",
+        "plasticbrain/php-flash-messages": "^1.0"
     }
 }

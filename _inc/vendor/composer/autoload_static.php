@@ -22,6 +22,7 @@ class ComposerStaticInit6e679968492cad316a7e86a4b03e8ccb
         'P' => 
         array (
             'Psr\\Log\\' => 8,
+            'Plasticbrain\\FlashMessages\\' => 27,
             'PHPMailer\\PHPMailer\\' => 20,
             'PHPAuth\\' => 8,
         ),
@@ -47,6 +48,10 @@ class ComposerStaticInit6e679968492cad316a7e86a4b03e8ccb
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/Psr/Log',
+        ),
+        'Plasticbrain\\FlashMessages\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/plasticbrain/php-flash-messages/src',
         ),
         'PHPMailer\\PHPMailer\\' => 
         array (
