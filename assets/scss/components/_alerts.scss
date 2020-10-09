@@ -1,0 +1,28 @@
+.alert {
+    padding: 1em;
+    margin: .5em;
+    border-radius: 1em;
+    animation: alertFade 1s ease-in-out 4s forwards;
+    color: #fff;
+}
+
+.alert-success {
+    background: green;
+}
+
+.alert-warning {
+    background: orange;
+}
+
+@keyframes alertFade {
+    from {
+        opacity: 1;
+    }
+
+    to {
+        opacity: 0;
+        padding: 0;
+        margin: 0;
+        height: 0;
+    }
+}
