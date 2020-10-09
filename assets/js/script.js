@@ -9,27 +9,29 @@ var changeTheme = (function(){
         run: function(){
             document.documentElement.setAttribute('data-theme', theme);
 
-            if(theme == 'dark') {
-                checkbox.checked = true;
-            } 
-
-            checkbox.addEventListener('change', function() {
-                if(this.checked) {
-                    trans()
-                    localStorage.setItem('theme', 'dark')
-                    document.documentElement.setAttribute('data-theme', 'dark')
-                } else {
-                    trans()
-                    localStorage.setItem('theme', 'light')
-                    document.documentElement.setAttribute('data-theme', 'light')
+            if(checkbox){
+                if(theme == 'dark') {
+                    checkbox.checked = true;
+                } 
+    
+                checkbox.addEventListener('change', function() {
+                    if(this.checked) {
+                        trans()
+                        localStorage.setItem('theme', 'dark')
+                        document.documentElement.setAttribute('data-theme', 'dark')
+                    } else {
+                        trans()
+                        localStorage.setItem('theme', 'light')
+                        document.documentElement.setAttribute('data-theme', 'light')
+                    }
+                });
+                
+                let trans = () => {
+                    document.documentElement.classList.add('transition');
+                    window.setTimeout(() => {
+                        document.documentElement.classList.remove('transition')
+                    }, 1000)
                 }
-            });
-            
-            let trans = () => {
-                document.documentElement.classList.add('transition');
-                window.setTimeout(() => {
-                    document.documentElement.classList.remove('transition')
-                }, 1000)
             }
         }
     }
@@ -46,18 +48,20 @@ var slidingMenu = (function(){
 
     return {
         run: function(){
-            menuToggle.addEventListener('click', function(ev) {
+            if(menuToggle){
+                menuToggle.addEventListener('click', function(ev) {
 
-                ev.preventDefault();
-                if(body.classList.contains('menu-active')){
-                    body.classList.add('menu-inactive');
-                    body.classList.remove('menu-active');
-                } else if(body.classList.contains('menu-inactive')){
-                    body.classList.add('menu-active');
-                    body.classList.remove('menu-inactive');
-                } else body.classList.add('menu-active');
+                    ev.preventDefault();
+                    if(body.classList.contains('menu-active')){
+                        body.classList.add('menu-inactive');
+                        body.classList.remove('menu-active');
+                    } else if(body.classList.contains('menu-inactive')){
+                        body.classList.add('menu-active');
+                        body.classList.remove('menu-inactive');
+                    } else body.classList.add('menu-active');
         
-            });
+                });
+            }
         }
     }
 }());
@@ -96,6 +100,9 @@ slidingMenu.run();
 // Create post - fetch data from new-post.php
 // *****************************************************/
 // createPost.createPost();
+
+// Check if string had two dots at the end 
+// *****************************************************/
 function checkPar(){
     var postParagraphs = document.querySelectorAll('.post-paragraphs');
 
@@ -113,3 +120,34 @@ function checkPar(){
 checkPar();
 
 
+// Get length before submit and after submit
+// *****************************************************/
+var getLength = (function(){
+
+    var run = function(){
+        var form = document.querySelector('form');
+        if(form){
+            var txt = document.getElementById('message');
+            var title = document.getElementById('title');
+
+            var txtOldL = document.getElementById('txtOldLength');
+            var txtNewL = document.getElementById('txtNewLength');
+            var titleOldL = document.getElementById('titleOldLength');
+            var titleNewL = document.getElementById('titleNewLength');
+
+            txtOldL.value = txt.value.length;
+            titleOldL.value = title.value.length;
+
+            form.addEventListener('submit', function(){
+                txtNewL.value = txt.value.length;
+                titleNewL.value = title.value.length;
+            });
+        }
+    }
+
+    return {
+        run: run
+    }
+}());
+
+getLength.run();
