@@ -110,6 +110,33 @@ body #strip-menu i {
   font-size: 200%;
 }
 
+.alert {
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 1em;
+  animation: alertFade 1s ease-in-out 4s forwards;
+  color: #fff;
+}
+
+.alert-success {
+  background: green;
+}
+
+.alert-warning {
+  background: orange;
+}
+
+@keyframes alertFade {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    padding: 0;
+    margin: 0;
+    height: 0;
+  }
+}
 .add-post #add-form, .delete #delete-form, .edit #edit-form {
   display: grid;
   grid-template-columns: 1fr;
@@ -365,7 +392,7 @@ header #logo2 path {
 }
 
 .toggle-container {
-  position: absolute;
+  position: fixed;
   top: 2.5em;
   right: 1em;
 }
@@ -498,6 +525,19 @@ html.transition *:after {
 }
 .posts .posts-wrapper .post .post-header .post-author {
   text-align: right;
+  padding: 1em;
+}
+.posts .posts-wrapper .post .post-header .post-author * {
+  margin: 0.2em;
+}
+.posts .posts-wrapper .post .post-header .post-author a {
+  display: block;
+}
+.posts .posts-wrapper .post .post-header .post-title {
+  padding: 1em;
+}
+.posts .posts-wrapper .post .post-header .post-title * {
+  margin: 0.2em;
 }
 .posts .posts-wrapper .post .post-body .post-text p {
   line-height: 1.7em;
