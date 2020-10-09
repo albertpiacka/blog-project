@@ -11,8 +11,11 @@
     ");
 
     if($post_id){
+        $msg->success('The post was successfully deleted!');
         header('Location: '.BASE_URL.'posts.php');
         die(); 
     }
+
+    
 
     
