@@ -39,6 +39,20 @@
                 grid-template-columns: 1fr 1fr;
                 .post-author {
                     text-align: right;
+                    padding: 1em;
+                    * {
+                        margin: .2em;
+                    }
+                    a {
+                        display: block;
+                    }
+                }
+
+                .post-title {
+                    padding: 1em;
+                    * {
+                        margin: .2em;
+                    }
                 }
                 border-bottom: 1px dotted #aaa;
             }
