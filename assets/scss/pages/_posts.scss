@@ -12,14 +12,14 @@
             border-radius: 1em;
         
             width: 80%;
-            margin: 2em auto;
+            margin: 4em auto;
         
             .img-container {
                 width: 100%;
                 height: 20em;
                 overflow: hidden;
                 border-radius: 1em 1em 0 0;
-                .img {
+                img {
                     width: 100%;
                     height: 100%;
                     border-radius: 1em 1em 0 0;
@@ -36,22 +36,39 @@
         
             .post-header {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 2fr 1fr;
                 .post-author {
                     text-align: right;
                     padding: 1em;
-                    * {
-                        margin: .2em;
-                    }
                     a {
                         display: block;
+                        padding: .3em;
                     }
+
+                    a:first-of-type {
+                        font-size: 1.3em;
+                    }
+
+                    i {
+                        transform: scale(1.2);
+                    }
+
+                    .fa-minus {
+                        margin-right: .3em;
+                    }
+
+    
                 }
 
                 .post-title {
                     padding: 1em;
-                    * {
-                        margin: .2em;
+                    h1 {
+                        margin: 0;
+                    }
+
+                    span {
+                        margin: 1em 0;
+                        display: block;
                     }
                 }
                 border-bottom: 1px dotted #aaa;
@@ -71,6 +88,39 @@
     }
 }
 
+//JUST TESTING
+
+.scaled {
+    animation: scaled 1s ease forwards;
+}
+
+@keyframes scaled {
+    from {
+        transform: scale(1);
+        width: 80%;
+    }
+
+    to {
+        transform: scale(1.05);
+        width: 100%;
+    }
+}
+
+.unscaled {
+    animation: unscaled 1s ease forwards;
+}
+
+@keyframes unscaled {
+    from {
+        transform: scale(1.05);
+        width: 100%;
+    }
+
+    to {
+        transform: scale(1);
+        width: 80%;
+    }
+}
 
 
 
