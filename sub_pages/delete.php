@@ -95,6 +95,7 @@
 
                 <div class="form-container">
 					<form id="delete-form" action="../_inc/delete-post.php" method="post">
+						<a href="<?php echo BASE_URL.'posts.php' ?>"><i class="fas fa-arrow-left"></i></a>
 						<input name="title" type="text" value="<?php echo $post[0]['title']?>" id="title" readonly>
 						<input name="id" type="hidden" value="<?php echo $_GET['id']?>">
 						<input name="txtOldLength" id="txtOldLength" type="hidden">
@@ -102,7 +103,7 @@
 						<input name="titleOldLength" id="titleOldLength" type="hidden">
 						<input name="titleNewLength" id="titleNewLength" type="hidden">
 						<textarea name="message" id="message" cols="30" rows="20" placeholder="Type something" readonly><?php echo $post[0]['text']?></textarea>
-						<input type="submit">
+						<input type="submit" value="Delete">
 					</form>
 				</div>
 
