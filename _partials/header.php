@@ -7,6 +7,10 @@
 
 	if($page_name == 'index') $page_name = 'home';
 	if($new_name == 'index') $new_name = 'home';
+
+	$query = $DB->query("SELECT * FROM posts ORDER by id DESC");
+
+	$posts = $query->fetchAll();
 	
 ?>
 
@@ -37,7 +41,6 @@
 					<ul class="ul-menu">
 
 						<?php
-
 							
 							$pages = glob('*.php');
 
@@ -61,41 +64,7 @@
 								if($new_name == $page ) echo '<li class="selected-page">'.ucfirst($page).'</li>';
 								else echo '<li><a href="'.$file.'">'.ucfirst($page).'</a></li>';
 
-							}
-							
-
-							// if(!can_edit()){
-							// 	$pages = glob('*.php');
-							// 	array_shift($pages);
-							// 	foreach( $pages as $file ) {
-
-							// 		$page = basename($file, '.php');
-							// 		if($page == 'index'){
-							// 			$page = 'home';
-							// 		} else if($page == 'add-post'){
-							// 			$page = 'add post';
-							// 		}
-									
-							// 		if($new_name == $page ) echo '<li class="selected-page">'.ucfirst($page).'</li>';
-							// 		else echo '<li><a href="'.$file.'">'.ucfirst($page).'</a></li>';
-	
-							// 	}
-							// } else {
-							// 	$pages = glob('*.php');
-							// 	foreach( $pages as $file ) {
-
-							// 		$page = basename($file, '.php');
-							// 		if($page == 'index'){
-							// 			$page = 'home';
-							// 		} else if($page == 'add-post'){
-							// 			$page = 'add post';
-							// 		}
-									
-							// 		if($new_name == $page ) echo '<li class="selected-page">'.ucfirst($page).'</li>';
-							// 		else echo '<li><a href="'.$file.'">'.ucfirst($page).'</a></li>';
-	
-							// 	}
-							// }	
+							}	
 
 						?>
 						
@@ -103,19 +72,18 @@
 				</section>
 
 				<section class="articles">
-					<article>
-						<h2>#Poached madness</h2>
-						<div class="img-container">
-							<div style="background-image: url('assets/img/img-1.jpg')" class="img img1"></div>
-						</div>
-					</article>
+					<?php
 
-					<article>
-						<h2>How to ferment anything</h2>
-						<div class="img-container">
-							<div style="background-image: url('assets/img/img-2.jpg')" class="img img2"></div>
-						</div>
-					</article>
+						foreach($posts as $post){
+							echo '<article class="article-'.$post['id'].'">';
+							echo	'<h2>'.$post['title'].'</h2>';
+							echo	'<div class="img-container">';
+							echo		'<img src="'.$post['img_url'].'" alt="">';
+							echo	'</div>';
+							echo '</article>';
+						}
+
+					?>
 				</section>
 			</div>
 
