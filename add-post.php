@@ -5,8 +5,9 @@
                     <!-- formular na spracovanie udajov -->
                     <form id="add-form" action="_inc/new-post.php" method="post">
                         <input name="title" type="text" placeholder="Title" id="title">
+                        <input name="img_url" type="text" placeholder="Image url" id="img_url">
                         <textarea name="message" id="message" cols="30" rows="20" placeholder="Type something"></textarea>
-                        <input type="submit">
+                        <input type="submit" value="Post">
                     </form>
 
                 </div>
