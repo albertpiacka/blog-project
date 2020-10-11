@@ -23,7 +23,7 @@
         ");
 
         if($post_id){
-            $msg->success('The post was succesfully added!');
+            $msg->success('The post was succesfully changed!');
             header('Location: '.BASE_URL.'posts.php');
             die(); 
         } 
