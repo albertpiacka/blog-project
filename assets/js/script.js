@@ -68,35 +68,6 @@ var slidingMenu = (function(){
 
 slidingMenu.run();
 
-// Post slider
-// *****************************************************/
-// var slidingPost = (function(){
-
-//     var post = document.querySelector('.post'),
-//         postWrapper = document.querySelector('.post-wrapper'),
-//         textarea = document.querySelector('textarea'),
-//         submit = document.querySelector('input'),
-//         menuPrimary = document.querySelector('.primary'),
-//         menuSecondary = document.querySelector('.secondary');
-
-//     return {
-//         run: function(){
-//             if(post){
-//                 post.addEventListener('click', function(e){
-//                     if(e.target != textarea){
-//                         postWrapper.classList.toggle('flexed');
-//                         menuPrimary.classList.toggle('unflexed');
-//                     }
-                    
-//                 });
-//             }
-//         }
-//     }
-
-// }());
-
-// slidingPost.run();
-
 // Create post - fetch data from new-post.php
 // *****************************************************/
 // createPost.createPost();
@@ -135,12 +106,20 @@ var getLength = (function(){
             var titleOldL = document.getElementById('titleOldLength');
             var titleNewL = document.getElementById('titleNewLength');
 
-            txtOldL.value = txt.value.length;
-            titleOldL.value = title.value.length;
+            if(txtOldL){
+                txtOldL.value = txt.value.length;
+            }
+            if(titleOldL){
+                titleOldL.value = title.value.length;
+            }
 
             form.addEventListener('submit', function(){
-                txtNewL.value = txt.value.length;
-                titleNewL.value = title.value.length;
+                if(txtNewL){
+                    txtNewL.value = txt.value.length;
+                }
+                if(titleNewL){
+                    titleNewL.value = title.value.length;
+                }
             });
         }
     }
@@ -151,3 +130,119 @@ var getLength = (function(){
 }());
 
 getLength.run();
+
+
+// Resize the post when you click on it, not on a elements
+// *****************************************************/
+var post = (function(){
+    var posts = document.querySelectorAll('.post');
+
+    var resize = function(){
+        if(posts){
+            posts.forEach(post => {
+                post.addEventListener('click', function(e){
+
+                    console.dir(e.target.style);
+
+                    if(e.target.nodeName == "I" || e.target.nodeName == "A") {
+                        return false;
+                    }
+                    
+                    let getSiblings = function(e) {
+                        // for collecting siblings
+                        let siblings = []; 
+                        // if no parent, return no sibling
+                        if(!e.parentNode) {
+                            return siblings;
+                        }
+                        // first child of the parent node
+                        let sibling  = e.parentNode.firstElementChild;
+                        // collecting siblings
+                        while (sibling) {
+                            if (sibling.nodeType === 1 && sibling !== e) {
+                                siblings.push(sibling);
+                            }
+                            sibling = sibling.nextSibling;
+                        }
+                        return siblings;
+                    };
+            
+                    let siblings = getSiblings(post);
+            
+                    if(post.className == `post ${post.classList[1]} scaled`) {
+                        post.classList.remove('scaled');
+                        post.classList.add('unscaled');
+            
+                    } else if(post.className == `post ${post.classList[1]} unscaled`) {
+                        post.classList.remove('unscaled');
+                        post.classList.add('scaled');
+                        siblings.forEach(sibling => {
+                            sibling.classList.add('unscaled');
+                            sibling.classList.remove('scaled');
+                        });
+                    } else {
+                        post.classList.add('scaled');
+                        siblings.forEach(sibling => {
+                            if(sibling.classList.contains('scaled')){
+                                sibling.classList.add('unscaled');
+                                sibling.classList.remove('scaled');
+                            }
+                        });
+                    }
+                });
+            });
+        }
+    }
+
+    return {
+        resize: resize
+    }
+
+}());
+
+post.resize();
+
+// Hides the element after opacity drops to 0
+// *****************************************************/
+
+let alert = document.querySelector('.alert');
+
+var hide = (function(){
+   
+    var it = function(el){
+        if(el){
+            var elCss = getComputedStyle(el);
+            var delay = (parseInt(elCss.animationDelay) * 1000) + 1000;
+            console.log(parseInt(delay));
+            setTimeout(function(){
+                if(elCss.opacity < 1){
+                    alert.style.display = "none";
+                }
+            }, delay);
+        }
+    }
+
+    return {
+        it: it
+    }
+}());
+
+hide.it(alert);
+
+// If there is only 1 article, it gets display block
+// *****************************************************/
+
+var articles = document.getElementById('articles');
+articles.classList.contains('1');
+
+if(articles.classList.contains('1')){
+    articles.style.display = "block";
+}
+
+var article = document.querySelectorAll('.article');
+
+for(var i = 2; i < article.length; i++){
+    article[i].style.display = "none";
+}
+
+
