@@ -1,24 +1,26 @@
-<?php include_once('_partials/header.php') ?>
+<?php 
+	include_once('_partials/header.php');
+	
+	$query = $DB->query("SELECT * FROM posts ORDER by id DESC");
+
+	$posts = $query->fetchAll();	
+?>
 
 				<section class="post-section">
+						<div class="flash-message">
+							<?php $msg->display(); ?>
+						</div>
 
 						<!-- tahame udaje z databazy -->
 						<div class="posts-wrapper">
-							<div class="flash-message">
-								<?php $msg->display(); ?>
-							</div>
 							<?php 
-								$query = $DB->query("SELECT * FROM posts ORDER by id DESC");
-
-								$posts = $query->fetchAll();
-
 								if(!$posts){
 									echo "<p>I'm so empty :-(</p>";
 								} else {
 									foreach($posts as $post){
 										echo '<div class="post post-'.$post['id'].'">';
 										echo 	'<div class="img-container">';
-										echo 		'<div class="img"></div>';
+										echo 		'<img src="'.$post['img_url'].'" alt="">';
 										echo	'</div>';
 	
 										echo 	'<div class="post-container">';
@@ -28,9 +30,9 @@
 										echo 				'<span>'.$post['created_at'].'</span>';
 										echo     		'</div>';
 										echo 			'<div class="post-author">';
-										echo				'<h2>Author</h2>';
-										echo				'<a href="sub_pages/edit.php?id='.$post['id'].'">Edit</a>';	
-										echo				'<a href="sub_pages/delete.php?id='.$post['id'].'">Delete</a>';
+										echo				'<a href="#">Author</a>';
+										echo				'<a href="sub_pages/edit.php?id='.$post['id'].'"><i class="far fa-edit"></i></a>';	
+										echo				'<a href="sub_pages/delete.php?id='.$post['id'].'"><i class="fas fa-minus"></i></a>';
 										echo			'</div>';
 										echo		'</div>';
 	
