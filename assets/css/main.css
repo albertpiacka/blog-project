@@ -114,7 +114,7 @@ body #strip-menu i {
   padding: 1em;
   margin: 0.5em;
   border-radius: 1em;
-  animation: alertFade 1s ease-in-out 4s forwards;
+  animation: alertFadeOut 1s ease-in-out 4s forwards;
   color: #fff;
 }
 
@@ -126,15 +126,13 @@ body #strip-menu i {
   background: orange;
 }
 
-@keyframes alertFade {
+@keyframes alertFadeOut {
   from {
     opacity: 1;
   }
   to {
     opacity: 0;
-    padding: 0;
-    margin: 0;
-    height: 0;
+    display: none;
   }
 }
 .add-post #add-form, .delete #delete-form, .edit #edit-form {
@@ -165,6 +163,12 @@ body #strip-menu i {
 }
 .add-post #add-form input[type=submit]:hover, .delete #delete-form input[type=submit]:hover, .edit #edit-form input[type=submit]:hover {
   background: #F49F2C;
+}
+.add-post #add-form .fa-arrow-left, .delete #delete-form .fa-arrow-left, .edit #edit-form .fa-arrow-left {
+  display: inline-block;
+  font-size: 2em;
+  padding: 0.5em;
+  color: #fafafa;
 }
 .add-post #add-form *, .delete #delete-form *, .edit #edit-form * {
   border: none;
@@ -231,6 +235,8 @@ header #logo2 path {
 .home .main .articles article p, .side-menu .articles article p {
   line-height: 1.6em;
   width: 90%;
+  height: 300px;
+  overflow: hidden;
   margin: 1em auto;
 }
 .home .main .articles article .img-container, .side-menu .articles article .img-container {
@@ -239,21 +245,23 @@ header #logo2 path {
   width: 90%;
   height: 20em;
   margin: auto;
+  cursor: pointer;
 }
-.home .main .articles article .img, .side-menu .articles article .img {
+.home .main .articles article img, .side-menu .articles article img {
   width: 100%;
   height: 100%;
   background-position: center;
   background-size: cover;
   transition: 1s transform ease;
+  cursor: pointer;
 }
-.home .main .articles article .img:hover, .side-menu .articles article .img:hover {
+.home .main .articles article img:hover, .side-menu .articles article img:hover {
   transform: scale(1.2);
 }
 
 .header-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   width: 90%;
   margin: auto;
 }
@@ -320,8 +328,9 @@ header #logo2 path {
 .side-menu .articles article h2 {
   position: relative;
   top: 1em;
-  left: 0.5em;
+  left: 0.2em;
   z-index: 2;
+  font-size: 1.8em;
 }
 .side-menu .ul-menu li {
   margin: 0.5em 0;
@@ -395,6 +404,7 @@ header #logo2 path {
   position: fixed;
   top: 2.5em;
   right: 1em;
+  z-index: 1000;
 }
 
 input[type=checkbox] {
@@ -498,7 +508,7 @@ html.transition *:after {
   color: #fafafa;
   border-radius: 1em;
   width: 80%;
-  margin: 2em auto;
+  margin: 4em auto;
 }
 .posts .posts-wrapper .post .img-container {
   width: 100%;
@@ -506,13 +516,13 @@ html.transition *:after {
   overflow: hidden;
   border-radius: 1em 1em 0 0;
 }
-.posts .posts-wrapper .post .img-container .img {
+.posts .posts-wrapper .post .img-container img {
   width: 100%;
   height: 100%;
   border-radius: 1em 1em 0 0;
   transition: 1s transform ease;
 }
-.posts .posts-wrapper .post .img-container .img:hover {
+.posts .posts-wrapper .post .img-container img:hover {
   transform: scale(1.2);
 }
 .posts .posts-wrapper .post .post-container {
@@ -520,30 +530,70 @@ html.transition *:after {
 }
 .posts .posts-wrapper .post .post-header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   border-bottom: 1px dotted #aaa;
 }
 .posts .posts-wrapper .post .post-header .post-author {
   text-align: right;
   padding: 1em;
 }
-.posts .posts-wrapper .post .post-header .post-author * {
-  margin: 0.2em;
-}
 .posts .posts-wrapper .post .post-header .post-author a {
   display: block;
+  padding: 0.3em;
+}
+.posts .posts-wrapper .post .post-header .post-author a:first-of-type {
+  font-size: 1.3em;
+}
+.posts .posts-wrapper .post .post-header .post-author i {
+  transform: scale(1.2);
+}
+.posts .posts-wrapper .post .post-header .post-author .fa-minus {
+  margin-right: 0.3em;
 }
 .posts .posts-wrapper .post .post-header .post-title {
   padding: 1em;
 }
-.posts .posts-wrapper .post .post-header .post-title * {
-  margin: 0.2em;
+.posts .posts-wrapper .post .post-header .post-title h1 {
+  margin: 0;
+}
+.posts .posts-wrapper .post .post-header .post-title span {
+  margin: 1em 0;
+  display: block;
 }
 .posts .posts-wrapper .post .post-body .post-text p {
   line-height: 1.7em;
   width: 70%;
   clear: both;
   padding: 1em;
+}
+
+.scaled {
+  animation: scaled 1s ease forwards;
+}
+
+@keyframes scaled {
+  from {
+    transform: scale(1);
+    width: 80%;
+  }
+  to {
+    transform: scale(1.05);
+    width: 100%;
+  }
+}
+.unscaled {
+  animation: unscaled 1s ease forwards;
+}
+
+@keyframes unscaled {
+  from {
+    transform: scale(1.05);
+    width: 100%;
+  }
+  to {
+    transform: scale(1);
+    width: 80%;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
