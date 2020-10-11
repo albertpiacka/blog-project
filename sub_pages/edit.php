@@ -100,6 +100,7 @@
 						<div class="flash-message">
 							<?php $msg->display(); ?>
 						</div>
+						<a href="<?php echo BASE_URL.'posts.php' ?>"><i class="fas fa-arrow-left"></i></a>
 						<input name="title" type="text" value="<?php echo $post[0]['title']?>" id="title">
 						<input name="id" type="hidden" value="<?php echo $_GET['id']?>">
 						<input name="txtOldLength" id="txtOldLength" type="hidden">
@@ -107,7 +108,7 @@
 						<input name="titleOldLength" id="titleOldLength" type="hidden">
 						<input name="titleNewLength" id="titleNewLength" type="hidden">
 						<textarea name="message" id="message" cols="30" rows="20" placeholder="Type something"><?php echo $post[0]['text']?></textarea>
-						<input type="submit">
+						<input type="submit" value="Edit">
 					</form>
 				</div>
 
