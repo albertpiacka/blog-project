@@ -2,7 +2,7 @@
     padding: 1em;
     margin: .5em;
     border-radius: 1em;
-    animation: alertFade 1s ease-in-out 4s forwards;
+    animation: alertFadeOut 1s ease-in-out 4s forwards;
     color: #fff;
 }
 
@@ -14,15 +14,14 @@
     background: orange;
 }
 
-@keyframes alertFade {
+@keyframes alertFadeOut {
     from {
         opacity: 1;
     }
 
     to {
         opacity: 0;
-        padding: 0;
-        margin: 0;
-        height: 0;
+        display: none;
     }
 }
+
