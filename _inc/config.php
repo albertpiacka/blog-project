@@ -118,20 +118,19 @@ function get_item(){
  */
 
 function redirect( $page, $status_code = 302 )
-	{
-		global $base_url;
+{
+    global $base_url;
 
-		if ( $page === 'back' )
-		{
-			$location = $_SERVER['HTTP_REFERER'];
-		}
-		else
-		{
-			$page = ltrim($page, '/');
-			$location = "$base_url/$page";
-		}
+    if ( $page === 'back' )
+    {
+        $location = $_SERVER['HTTP_REFERER'];
+    }
+    else
+    {
+        $page = ltrim($page, '/');
+        $location = "$base_url/$page";
+    }
 
-		header("Location: $location", true, $status_code);
-		die();
-	}
-
+    header("Location: $location", true, $status_code);
+    die();
+}
