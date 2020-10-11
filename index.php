@@ -1,50 +1,43 @@
-<?php include_once('_partials/header.php') ?>
+<?php 
+	include_once('_partials/header.php');
+
+	$numPosts = count($posts);
+	
+?>
 
 				<div class="articles-heading">
 					<a href="#">Dont't miss out</a>
 				</div>
 
-				<section class="articles">
-					<article>
-						<div class="header-container">
-							<div class="title">
-								<h1>#Poached madness</h1>
-							</div>
+				<section id="articles" class="articles <?php echo $numPosts ?>">
+					<?php 
+						if(!$posts){
+							echo "<p>I'm so empty :-(</p>";
+						} else {
+							foreach($posts as $post){
+								echo '<article class="article article-'.$post['id'].'">';
+								echo 	'<div class="header-container">';
+								echo		'<div class="title">';
+								echo			'<h1>'.$post['title'].'</h1>';
+								echo		'</div>';
+								echo		'<div class="post-author">';
+								echo			'<span>Author</span>';
+								echo			'<span class="author-name">Name</span>';
+								echo		'</div>';
+								echo	'</div>';
 
-							<div class="post-author">
-								<span>Author</span>
-								<span class="author-name">Jane</span>
-							</div>
-						</div>
-
-						<div class="img-container">
-							<div style="background-image: url('assets/img/img-1.jpg')" class="img img1"></div>
-						</div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-					</article>
-
-					<article>
-						<div class="header-container">
-							<div class="title">
-								<h1>How to ferment anything</h1>
-							</div>
-
-							<div class="post-author">
-								<span>Author</span>
-								<span class="author-name">John</span>
-							</div>
-						</div>
-
-						<div class="img-container">
-							<div style="background-image: url('assets/img/img-2.jpg')" class="img img2"></div>
-						</div>
-						<p>
-							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-						</p>
-					</article>
+								echo 	'<div class="img-container">';
+								echo		'<img src="'.$post['img_url'].'" alt="">';
+								echo	'</div>';
+								echo	'<p>';
+								echo		$post['text'];
+								echo	'</p>';
+								echo '</article>';
+							}
+						}
+					?>
 				</section>
+
 			</div>
 
 		</div>
