@@ -30,8 +30,18 @@
         }
     }
 
+    .fa-arrow-left {
+        display: inline-block;
+        font-size: 2em;
+        padding: .5em;
+        color: $color-article; 
+    }
+
     *, *:focus {
         border: none;
         outline: none;
     }
 }
+
+
+
