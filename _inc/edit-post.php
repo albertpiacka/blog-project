@@ -16,7 +16,7 @@
         $msg->warning("You haven't changed it at all!");
         redirect('back');
     } else {
-        $post_id = $DB->query("UPDATE posts SET
+        $post_id = $dbh->query("UPDATE posts SET
                 title = '$title',
                 text = '$message'
             WHERE id = $id
