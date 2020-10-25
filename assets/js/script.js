@@ -200,7 +200,7 @@ var post = (function(){
 
 }());
 
-post.resize();
+// post.resize();
 
 // Hides the element after opacity drops to 0
 // *****************************************************/
@@ -280,6 +280,101 @@ var changeImg = (function(){
 }());
 
 changeImg.run();
+
+// Image changes after loading one to input
+// *****************************************************/
+
+var loadImg = (function(){
+    const userImg = document.querySelector('.userImg');
+    const fileSelector = document.getElementById('file');
+
+    const run = function(){
+        if(fileSelector && userImg){
+            fileSelector.addEventListener('change', (event) => {
+                const file = event.target.files;
+                function readImage(file) {
+                  // Check if the file is an image.
+                  if (file.type && file.type.indexOf('image') === -1) {
+                    console.log('File is not an image.', file.type, file);
+                    return;
+                  }
+            
+                  const reader = new FileReader();
+                  reader.addEventListener('load', (event) => {
+                    userImg.src = event.target.result;
+                  });
+                  reader.readAsDataURL(file);
+                };
+                readImage(file[0]);
+            });
+        }
+    }
+
+    return {
+        run: run
+    }
+}());
+
+loadImg.run();
+
+// Fetch comments and show them with fade effect
+// *****************************************************/
+
+var createComment = (function(){
+
+    var sendForm = function(form){
+        var url = form.getAttribute('action');
+    
+        const formData = new FormData(form);
+    
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        }).then(function(response){
+            return response.text();
+        }).then(function(text){
+            var comment = JSON.parse(text);
+
+            console.log(comment);
+            console.log(form.parentNode.children[0]);
+
+            var newComment = document.createElement('div');
+            var h3 = document.createElement('h3');
+            var p = document.createElement('p');
+
+            newComment.setAttribute('class', 'comment');
+
+            h3.innerText = comment[1];
+            p.innerText = comment[0];
+
+            newComment.append(h3, p);
+            newComment.classList.add('fadeIn');
+
+            form.parentNode.children[0].append(newComment);
+
+            form.parentNode.children[1][0].value = '';
+        }).catch(function(response){
+            return;
+        });
+    }
+    
+    return {
+        sendForm: sendForm
+    }
+}());
+
+const forms = document.querySelectorAll('form');
+
+if(forms){
+    forms.forEach(form => {
+
+        form.addEventListener('submit', function(e){
+            e.preventDefault();
+            createComment.sendForm(form);
+        });
+    
+    });
+}
 
 
 
