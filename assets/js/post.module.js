@@ -29,7 +29,7 @@ var createPost = (function(){
 
             h3.innerText = post[1];
             p.innerText = post[0];
-
+            
             title.append(h3);
             text.append(p);
 
