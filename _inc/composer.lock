@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8029fa5d7120f4b70150e44139e2b733",
+    "content-hash": "8d889701fbb49ea1ad87003b4571c9b8",
     "packages": [
         {
             "name": "bjeavons/zxcvbn-php",
@@ -221,20 +221,21 @@
         },
         {
             "name": "phpauth/phpauth",
-            "version": "1.1.4",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPAuth/PHPAuth.git",
-                "reference": "eabcc66f5d39f9afd2d145654f7855e55b8ca792"
+                "reference": "924e3e8c317bb774e1f14490c9381eba493739c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPAuth/PHPAuth/zipball/eabcc66f5d39f9afd2d145654f7855e55b8ca792",
-                "reference": "eabcc66f5d39f9afd2d145654f7855e55b8ca792",
+                "url": "https://api.github.com/repos/PHPAuth/PHPAuth/zipball/924e3e8c317bb774e1f14490c9381eba493739c0",
+                "reference": "924e3e8c317bb774e1f14490c9381eba493739c0",
                 "shasum": ""
             },
             "require": {
                 "bjeavons/zxcvbn-php": "^0.4",
+                "ext-pdo": "*",
                 "google/recaptcha": "^1.2",
                 "php": ">=7.0.0",
                 "phpmailer/phpmailer": "^6.0"
@@ -259,7 +260,7 @@
                 "class",
                 "secure"
             ],
-            "time": "2020-01-14T15:48:25+00:00"
+            "time": "2020-10-15T23:55:25+00:00"
         },
         {
             "name": "phpmailer/phpmailer",
@@ -422,7 +423,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "phpauth/phpauth": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

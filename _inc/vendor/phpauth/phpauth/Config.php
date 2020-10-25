@@ -2,6 +2,10 @@
 
 namespace PHPAuth;
 
+use PDO;
+use PDOException;
+use PDOStatement;
+
 /**
  * PHPAuth Config class
  */
@@ -24,12 +28,12 @@ class Config
      *
      * in any case, 4th argument defines site language as locale code
      *
-     * @param \PDO $dbh
+     * @param PDO $dbh
      * @param string $config_source -- declare source of config - table name, filepath or data-array
      * @param string $config_type -- default empty (means config in SQL table phpauth_config), possible values: 'sql', 'ini', 'array'
      * @param string $config_site_language -- declare site language, empty value means 'en_GB'
      */
-    public function __construct(\PDO $dbh, $config_source = NULL, $config_type = '', $config_site_language = '')
+    public function __construct(PDO $dbh, $config_source = NULL, $config_type = '', $config_site_language = '')
     {
         $config_type = strtolower($config_type);
 
@@ -41,7 +45,8 @@ class Config
         $this->dbh = $dbh;
 
         switch ($config_type) {
-            case 'ini': {
+            case 'ini':
+            {
 
                 // check valid keys
                 if (empty($config_source)) die('PHPAuth: config type is FILE, but no source file declared!'); //@todo: \Exception
@@ -57,7 +62,8 @@ class Config
 
                 break;
             }
-            case 'array': {
+            case 'array':
+            {
                 // check data is valid
                 if (empty($config_source)) die('PHPAuth: config type is ARRAY, but source config is EMPTY'); //@todo: \Exception
 
@@ -66,28 +72,38 @@ class Config
 
                 break;
             }
-            case 'json': {
+            case 'json':
+            {
                 break;
             }
-            case 'yml': {
+            case 'yml':
+            {
                 break;
             }
-            case 'xml': {
+            case 'xml':
+            {
                 break;
             }
-            default: {
+            default:
+            {
                 // is 'SQL' or EMPTY value
                 //
                 // determine config table
                 $this->config_table = (empty($config_source)) ? 'phpauth_config' : $config_source;
 
-                // check config table exists
-                if (! $this->dbh->query("SHOW TABLES LIKE '{$this->config_table}'")->fetchAll() ) {
-                    die("PHPAuth: Config table `{$this->config_table}` NOT PRESENT in given database" . PHP_EOL);
-                };
-
                 // load configuration
-                $this->config = $this->dbh->query("SELECT `setting`, `value` FROM {$this->config_table}")->fetchAll(\PDO::FETCH_KEY_PAIR);
+                try {
+                    $configQuery = $this->dbh->query("SELECT `setting`, `value` FROM {$this->config_table};");
+
+                    if ($configQuery instanceof PDOStatement) {
+                        $this->config = $configQuery->fetchAll(PDO::FETCH_KEY_PAIR);
+                    } else {
+                        throw new PDOException();
+                    }
+
+                } catch (PDOException $e) {
+                    die("PHPAuth: Config table `{$this->config_table}` NOT PRESENT in given database" . PHP_EOL);
+                }
 
                 break;
             }
@@ -98,24 +114,32 @@ class Config
         // Check required tables exists
 
         // check table_attempts
-        if (! $this->dbh->query("SHOW TABLES LIKE '{$this->config['table_attempts']}'")->fetchAll() ) {
-            die("PHPAuth: Table `{$this->config['table_attempts']}` NOT PRESENT in given database" . PHP_EOL);
-        };
+        try {
+            $this->dbh->query("SELECT * FROM {$this->config['table_attempts']} LIMIT 1;");
+        } catch (PDOException $e) {
+            die("PHPAuth: Config table `{$this->config['table_attempts']}` NOT PRESENT in given database" . PHP_EOL);
+        }
 
         // check table requests
-        if (! $this->dbh->query("SHOW TABLES LIKE '{$this->config['table_requests']}'")->fetchAll() ) {
-            die("PHPAuth: Table `{$this->config['table_requests']}` NOT PRESENT in given database" . PHP_EOL);
-        };
+        try {
+            $this->dbh->query("SELECT * FROM {$this->config['table_requests']} LIMIT 1;");
+        } catch (PDOException $e) {
+            die("PHPAuth: Config table `{$this->config['table_requests']}` NOT PRESENT in given database" . PHP_EOL);
+        }
 
         // check table sessions
-        if (! $this->dbh->query("SHOW TABLES LIKE '{$this->config['table_sessions']}'")->fetchAll() ) {
-            die("PHPAuth: Table `{$this->config['table_sessions']}` NOT PRESENT in given database" . PHP_EOL);
-        };
+        try {
+            $this->dbh->query("SELECT * FROM {$this->config['table_sessions']} LIMIT 1;");
+        } catch (PDOException $e) {
+            die("PHPAuth: Config table `{$this->config['table_sessions']}` NOT PRESENT in given database" . PHP_EOL);
+        }
 
         // check table users
-        if (! $this->dbh->query("SHOW TABLES LIKE '{$this->config['table_users']}'")->fetchAll() ) {
-            die("PHPAuth: Table `{$this->config['table_users']}` NOT PRESENT in given database" . PHP_EOL);
-        };
+        try {
+            $this->dbh->query("SELECT * FROM {$this->config['table_users']} LIMIT 1;");
+        } catch (PDOException $e) {
+            die("PHPAuth: Config table `{$this->config['table_users']}` NOT PRESENT in given database" . PHP_EOL);
+        }
 
         // Determine site language
         $site_language = (empty($config_site_language))
@@ -127,7 +151,8 @@ class Config
         if (isset($this->config['translation_source'])) {
 
             switch ($this->config['translation_source']) {
-                case 'php': {
+                case 'php':
+                {
 
                     $lang_file = dirname(__FILE__) . DIRECTORY_SEPARATOR . "languages" . DIRECTORY_SEPARATOR . "{$site_language}.php";
 
@@ -139,7 +164,8 @@ class Config
 
                     break;
                 }
-                case 'ini': {
+                case 'ini':
+                {
 
                     $lang_file = dirname(__FILE__) . DIRECTORY_SEPARATOR . "languages" . DIRECTORY_SEPARATOR . "{$site_language}.ini";
 
@@ -150,7 +176,8 @@ class Config
                     }
                     break;
                 }
-                case 'sql': {
+                case 'sql':
+                {
 
                     // check field `table_translations` present
                     if (empty($this->config['table_translations'])) {
@@ -159,23 +186,28 @@ class Config
                     }
 
                     // check table exists in database
-                    if (! $this->dbh->query("SHOW TABLES LIKE '{$this->config['table_translations']}'")->fetchAll() ) {
+                    try {
+                        $this->dbh->query("SELECT * FROM {$this->config['table_translations']} LIMIT 1;");
+                    } catch (PDOException $e) {
                         $dictionary = $this->setForgottenDictionary();
                         break;
-                    };
+                    }
 
                     $query = "SELECT `translation_key`, `{$site_language}` as `lang` FROM {$this->config['table_translations']} ";
-                    $dictionary = $this->dbh->query($query)->fetchAll(\PDO::FETCH_KEY_PAIR);
+                    $dictionary = $this->dbh->query($query)->fetchAll(PDO::FETCH_KEY_PAIR);
 
                     break;
                 }
-                case 'xml': {
+                case 'xml':
+                {
                     break;
                 }
-                case 'json': {
+                case 'json':
+                {
                     break;
                 }
-                default: {
+                default:
+                {
                     $dictionary = $this->setForgottenDictionary();
                 }
             } // end switch
@@ -285,7 +317,7 @@ class Config
 
         // others
         $this->repairConfigValue('allow_concurrent_sessions', false);
-	}
+    }
 
     /**
      * Set configuration value if it is not present.
@@ -311,13 +343,13 @@ class Config
         $lang['user_verify_failed'] = "Captcha Code was invalid.";
 
         //new
-        $lang['account_email_invalid']  = "Email address is incorrect or banned";
+        $lang['account_email_invalid'] = "Email address is incorrect or banned";
 
         //new
         $lang['account_password_invalid'] = "Password is invalid";
 
         //new
-        $lang['account_not_found']          = "Account with given email not found.";
+        $lang['account_not_found'] = "Account with given email not found.";
 
 
         $lang['login_remember_me_invalid'] = "The remember me field is invalid.";
@@ -390,6 +422,6 @@ class Config
 
         return $lang;
     }
-	
+
 
 }
