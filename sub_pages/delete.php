@@ -13,6 +13,23 @@
 
 	$post = $item->fetchAll();
 
+	if (!$auth->isLogged()) {
+		header('HTTP/1.0 403 Forbidden');
+		echo "Forbidden";
+		echo '<a href="../index.php">Home</a>';
+	
+		die();
+	} else if($auth->isLogged()){
+		$uid = $auth->getSessionUID($_COOKIE[$auth_config->cookie_name]);
+
+		$user = $auth->getUser($uid);
+
+		$user_id = $user['uid'];
+
+		$users_info = $dbh->query("SELECT * FROM users_info WHERE user_id = $user_id");
+		$info = $users_info->fetch();
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -35,6 +52,13 @@
 
 		<div class="side-menu">
 			<div class="account-info">
+				<?php
+					if($auth->isLogged() && !$info['user_img']){
+						echo '<a href="profile.php"><img src="../assets/img/user-default.png" alt="#"></a>';
+					} else {
+						echo '<a href="profile.php"><img src="../files/'.$info['user_img'].'" alt="#"></a>';
+					}
+				?>
 			</div>
 
 			<div class="content-container">
@@ -49,19 +73,22 @@
 				</section>
 
 				<section class="articles">
-					<article>
-						<h2>#Poached madness</h2>
-						<div class="img-container">
-							<div style="background-image: url('../assets/img/img-1.jpg')" class="img img1"></div>
-						</div>
-					</article>
+					<?php
+						
+						$query = $dbh->query("SELECT * FROM posts ORDER by id DESC");
 
-					<article>
-						<h2>How to ferment anything</h2>
-						<div class="img-container">
-							<div style="background-image: url('../assets/img/img-2.jpg')" class="img img2"></div>
-						</div>
-					</article>
+						$postPreviews = $query->fetchAll();
+
+						foreach($postPreviews as $preview){
+							echo '<article class="article-'.$preview['id'].'">';
+							echo	'<h2>'.$preview['title'].'</h2>';
+							echo	'<div class="img-container">';
+							echo		'<a href="'.BASE_URL.'posts.php#post-'.$preview['id'].'"><img src="../files/'.$preview['img_dir'].'" alt=""></a>';
+							echo	'</div>';
+							echo '</article>';
+						}
+
+					?>
 				</section>
 			</div>
 
