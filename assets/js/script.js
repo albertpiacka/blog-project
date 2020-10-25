@@ -232,17 +232,54 @@ hide.it(alert);
 // If there is only 1 article, it gets display block
 // *****************************************************/
 
-var articles = document.getElementById('articles');
-articles.classList.contains('1');
+var showOneArticle = (function(){
+    var articles = document.getElementById('articles');
+   
+    var run = function(){
+        if(articles){
+            if(articles.classList.contains('1')){
+                articles.style.display = "block";
+            }
+        }
+    
+        var article = document.querySelectorAll('.article');
+    
+        if(article){
+            for(var i = 2; i < article.length; i++){
+                article[i].style.display = "none";
+            }
+        }
+    };
 
-if(articles.classList.contains('1')){
-    articles.style.display = "block";
-}
+    return {
+        run: run
+    }
+}());
 
-var article = document.querySelectorAll('.article');
+showOneArticle.run();
 
-for(var i = 2; i < article.length; i++){
-    article[i].style.display = "none";
-}
+
+// Input type file opens by clicking on overlay image
+// *****************************************************/
+
+var changeImg = (function(){
+    var insertImg = document.querySelector('.insertImg'),
+        imgFile = document.getElementById('file');
+
+    var run = function(){
+        if(insertImg){
+            insertImg.addEventListener('click', function(){
+                imgFile.click();
+            });
+        }
+    }
+
+    return {
+        run: run
+    }
+}());
+
+changeImg.run();
+
 
 
