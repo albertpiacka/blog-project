@@ -8,10 +8,20 @@
 	if($page_name == 'index') $page_name = 'home';
 	if($new_name == 'index') $new_name = 'home';
 
-	$query = $DB->query("SELECT * FROM posts ORDER by id DESC");
+	$query = $dbh->query("SELECT * FROM posts ORDER by id DESC");
 
 	$posts = $query->fetchAll();
-	
+
+	if($auth->isLogged()){
+		$uid = $auth->getSessionUID($_COOKIE[$auth_config->cookie_name]);
+
+		$user = $auth->getUser($uid);
+
+		$user_id = $user['uid'];
+
+		$users_info = $dbh->query("SELECT * FROM users_info WHERE user_id = $user_id");
+		$info = $users_info->fetch();
+	}
 ?>
 
 <!DOCTYPE html>
@@ -33,7 +43,28 @@
 	<body class="<?php echo $page_name; ?>">
 
 		<div class="side-menu">
-			<div class="account-info">
+			<?php if($auth->isLogged()) : ?>
+				<div class="account-info">
+					
+					<?php
+						if(!$info['user_img']){
+							echo '<a href="sub_pages/profile.php"><img src="assets/img/user-default.png" alt="#"></a>';
+						} else if($info['user_img']){
+							echo '<a href="sub_pages/profile.php"><img src="files/'.$info['user_img'].'" alt="#"></a>';
+						} 
+					?>
+					
+				</div>
+			<?php endif ?>
+			<div class="account-controls">
+				<?php
+					if ($auth->isLogged()) {
+						echo '<button class="sign-up"><a href="_inc/logout.php">Sign out</a></button>';
+					} else {
+						echo '<button class="sign-up"><a href="sub_pages/sign-up.php">Sign up</a></button>';
+						echo '<button class="sign-in"><a href="sub_pages/sign-in.php">Sign in</a></button>';
+					}
+				?>
 			</div>
 
 			<div class="content-container">
@@ -43,14 +74,6 @@
 						<?php
 							
 							$pages = glob('*.php');
-
-							$exclude = ['404.php', 'delete.php', 'edit.php'];
-
-							foreach($exclude as $item){
-								if (($key = array_search($item, $pages)) !== false) {
-									unset($pages[$key]);
-								}								
-							}
 
 							foreach( $pages as $file ) {
 
@@ -78,7 +101,7 @@
 							echo '<article class="article-'.$post['id'].'">';
 							echo	'<h2>'.$post['title'].'</h2>';
 							echo	'<div class="img-container">';
-							echo		'<img src="'.$post['img_url'].'" alt="">';
+							echo		'<a href="'.BASE_URL.'posts.php#post-'.$post['id'].'"><img src="files/'.$post['img_dir'].'" alt=""></a>';
 							echo	'</div>';
 							echo '</article>';
 						}
