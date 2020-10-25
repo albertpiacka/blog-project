@@ -2,11 +2,9 @@
 
     require('config.php');
 
-    $message = $_POST['message'];
-    $title = $_POST['title'];
     $id = $_POST['id'];
 
-    $post_id = $DB->query("DELETE FROM posts 
+    $post_id = $dbh->query("DELETE FROM posts 
             WHERE id = $id
     ");
 
