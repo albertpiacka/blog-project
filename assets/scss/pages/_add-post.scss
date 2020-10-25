@@ -2,29 +2,4 @@
     #add-form {
         @extend %formStyles;
     }
-
-    // USE FOR COMMENTS
-    // .post {
-    //     background: var(--bg-article);
-    //     color: $color-article;
-    //     border-radius: 1em;
-    //     position: relative;
-    //     margin: 2em auto;
-    //     padding: 1em;
-    //     width: 70%;
-    // }
-    
-    // .fadeIn {
-    //     animation: fadeIn .5s ease forwards;
-    // }
-    
-    // @keyframes fadeIn {
-    //     from {
-    //         opacity: 0;
-    //     }
-    
-    //     to {
-    //         opacity: 1;
-    //     }
-    // }
 }
