@@ -33,12 +33,19 @@ $config = [
 
 ];
 
-$DB = new PDO(
+$dbh = new PDO(
 
     "{$config['db']['db_type']}:host={$config['db']['server']};dbname={$config['db']['db_name']}",
     $config['db']['username'], $config['db']['password']
  
 );
+
+require_once 'vendor/phpauth/phpauth/Config.php';
+require_once 'vendor/phpauth/phpauth/Auth.php';
+
+$auth_config = new PHPAuth\Config($dbh);
+$auth   = new PHPAuth\Auth($dbh, $auth_config);
+
 
 /******************************************
  * Functions
@@ -50,8 +57,10 @@ $DB = new PDO(
  * Create paragraph
  * @param $array
  */
+
 function return_paragraphs($array){
-    $newArray = array_chunk($array, 10);
+    $oldArray = explode('.', $array);
+    $newArray = array_chunk($oldArray, 10);
     foreach($newArray as $array){
         $finalArr = implode('.', $array);
         echo '<div class="post-text">';
@@ -100,10 +109,10 @@ function get_item(){
         return false;
     }
 
-    global $DB;
+    global $dbh;
 
     $id = $_GET['id'];
-    $item = $DB->query("SELECT * FROM posts WHERE id = $id");
+    $item = $dbh->query("SELECT * FROM posts WHERE id = $id");
     
     if(!$item){
         return false;
