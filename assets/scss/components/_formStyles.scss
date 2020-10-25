@@ -5,7 +5,7 @@
     margin: 2em auto;
     input, textarea {
         margin: .5em;
-        padding: .5em;
+        padding: 1em;
         border-radius: 1em;
         background: var(--bg-article);
         color: $color-article; 
@@ -15,8 +15,13 @@
         padding: 1em;
     }
 
-    input:nth-of-type(1) {
-        padding: 1em;
+    input[type="file"]::-webkit-file-upload-button{
+        background-color: var(--bg-article);
+        color: darken($color-article, 30%);
+        cursor: pointer;
+        outline: none;
+        border: none;
+        filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
     }
 
     input[type="submit"]{
