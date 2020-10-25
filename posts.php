@@ -1,10 +1,4 @@
-<?php 
-	include_once('_partials/header.php');
-	
-	$query = $DB->query("SELECT * FROM posts ORDER by id DESC");
-
-	$posts = $query->fetchAll();	
-?>
+<?php include_once('_partials/header.php') ?>
 
 				<section class="post-section">
 						<div class="flash-message">
@@ -18,9 +12,13 @@
 									echo "<p>I'm so empty :-(</p>";
 								} else {
 									foreach($posts as $post){
-										echo '<div class="post post-'.$post['id'].'">';
+										echo '<div id="post-'.$post['id'].'" class="post post-'.$post['id'].'">';
 										echo 	'<div class="img-container">';
-										echo 		'<img src="'.$post['img_url'].'" alt="">';
+										if($post['img_dir']){
+											echo 		'<img src="files/'.$post['img_dir'].'" alt="haha">';
+										} else {
+											echo 		'<div class="empty-div	"></div>';
+										}
 										echo	'</div>';
 	
 										echo 	'<div class="post-container">';
@@ -30,16 +28,26 @@
 										echo 				'<span>'.$post['created_at'].'</span>';
 										echo     		'</div>';
 										echo 			'<div class="post-author">';
-										echo				'<a href="#">Author</a>';
-										echo				'<a href="sub_pages/edit.php?id='.$post['id'].'"><i class="far fa-edit"></i></a>';	
-										echo				'<a href="sub_pages/delete.php?id='.$post['id'].'"><i class="fas fa-minus"></i></a>';
+										$id = $post['user_id'];
+										$queryUsers = $dbh->query("SELECT * FROM phpauth_users WHERE id = $id");
+
+										$users = $queryUsers->fetchAll();
+										if($post['user_name'] == 'empty'){
+											echo			'<h3 class="author-name">'.$users[0]['email'].'</h3>';
+										} else echo 		'<h3 class="author-name">'.$post['user_name'].'</h3>';
+
+										if($auth->isLogged()){
+											if($post['user_id'] == $user_id){
+												echo		'<a href="sub_pages/edit.php?id='.$post['id'].'"><i class="far fa-edit"></i></a>';	
+												echo		'<a href="sub_pages/delete.php?id='.$post['id'].'"><i class="fas fa-minus"></i></a>';
+											}
+										}
 										echo			'</div>';
 										echo		'</div>';
 	
 										echo		'<div class="post-body">';
 										echo     		'<div class="post-paragraphs">';
-															$oldArr = explode('.', $post['text']);
-															return_paragraphs($oldArr);
+															return_paragraphs($post['text']);
 										echo     		'</div>';
 										echo 		'</div>';
 										echo 	'</div>';
