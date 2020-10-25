@@ -1,0 +1,177 @@
+.profile {
+    .profile-box {
+        width: 90%;
+        margin: 3em auto;
+        padding: 2em;
+        color: $color-article;
+
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-column-gap: 1em;
+        grid-row-gap: 1em;
+
+        .img-container {
+            border-radius: 1em;
+            background-color: var(--bg-article);
+            overflow: hidden;
+            max-height: 25em;
+            img {
+                width: 100%;
+                height: 100%;
+            }
+
+        }
+
+        .info-container {
+            border-radius: 1em;
+            padding: 1em;
+            background-color: var(--bg-article);
+            .edit-profile {
+                text-align: right;
+                .fa-user-edit {
+                    font-size: 2em;
+                    padding: .2em;
+                }
+            }
+            .input-box {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                border-radius: 1em;
+                background: var(--bg-article-darken);
+                margin: .2em 0;
+                span {
+                    margin: auto 0;
+                    padding: 0 .6em;
+                }
+                div {
+                    padding: 1em;
+                }
+            }
+
+            .box-2 {
+                * {
+                    padding: 0 .6em;
+                    margin: .3em 0;
+                }
+            }
+        }
+    }    
+}
+
+.edit-profile {
+    .go-back {
+        width: 90%;
+        margin: auto;
+        margin-top: 5em;
+        padding: 0 2em;
+        .fa-arrow-left {
+            display: inline-block;
+            font-size: 2em;
+            color: $color-article; 
+        }
+    }
+
+    #edit-profile-form {
+        width: 90%;
+        margin: auto;
+        padding: 2em;
+        color: $color-article;
+
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+        grid-column-gap: 1em;
+        grid-row-gap: 1em;
+
+        .img-container {
+            border-radius: 1em;
+            background-color: var(--bg-article);
+            overflow: hidden;
+            max-height: 20em;
+            position: relative;
+            &:hover {
+                .userImg {
+                    opacity: .6;
+                }
+                .insertImg {
+                    opacity: .8;
+                }
+            }
+            img {
+                width: 100%;
+                height: 100%;
+                cursor: pointer;
+                transition: all .3s ease;
+            }
+
+            .insertImg {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                padding: 5em;
+                opacity: 0;
+            }
+        }
+
+        .info-container {
+            background-color: var(--bg-article);
+            border-radius: 1em;
+        }
+
+        .box-1 {
+            border-radius: 1em;
+            padding: 1em 0;
+            width: 90%;
+            margin: auto;
+            background-color: var(--bg-article);
+
+            .input-box {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                span {
+                    margin: auto 0;
+                }
+            }
+        }
+
+        .box-2 {
+            textarea {
+                display: block;
+                width: 90%;
+                margin: auto;
+            }
+
+            input[type="submit"]{
+                width: 30%;
+                margin: .3em auto;
+                display: block;
+                padding: 1em;
+                cursor: pointer;
+                transition: background .3s ease;
+                &:hover {
+                    background: $color-bg-btn;
+                }
+            }
+
+            span {
+                display: block;
+                width: 90%;
+                margin: auto;
+                padding: 1em 0;
+                text-align: left;
+            }
+        }
+
+        input, textarea {
+            margin: .5em;
+            padding: 1em;
+            border-radius: 1em;
+            background: var(--bg-article-darken);
+            color: $color-article; 
+            border: none;
+            outline: none;
+        }
+
+    }
+}
