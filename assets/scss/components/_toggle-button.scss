@@ -2,12 +2,13 @@
 // This file contains toggle button for dark and light mode.
 // -----------------------------------------------------------------------------
 .toggle-container {
-    position: absolute;
+    position: fixed;
     top: 2.5em;
-    right: 1em;
+	right: 1em;
+	z-index: 1000;
 }
 
-input[type=checkbox]{
+#switch{
 	height: 0;
 	width: 0;
 	visibility: hidden;

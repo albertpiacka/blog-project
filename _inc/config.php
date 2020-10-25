@@ -3,8 +3,13 @@
 //Require stuff
 require 'vendor/autoload.php';
 
+// Start a Session
+if (!session_id()) @session_start();
+	
+// Instantiate the class
+$msg = new \Plasticbrain\FlashMessages\FlashMessages();
+
 //Namespace
-use Medoo\Medoo;
 $whoops = new \Whoops\Run;
 $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
@@ -28,19 +33,34 @@ $config = [
 
 ];
 
-$DB = new PDO(
+$dbh = new PDO(
 
     "{$config['db']['db_type']}:host={$config['db']['server']};dbname={$config['db']['db_name']}",
     $config['db']['username'], $config['db']['password']
  
 );
 
+require_once 'vendor/phpauth/phpauth/Config.php';
+require_once 'vendor/phpauth/phpauth/Auth.php';
+
+$auth_config = new PHPAuth\Config($dbh);
+$auth   = new PHPAuth\Auth($dbh, $auth_config);
+
+
+/******************************************
+ * Functions
+ * 
+ ****************************************/
+
+
 /**
  * Create paragraph
  * @param $array
  */
+
 function return_paragraphs($array){
-    $newArray = array_chunk($array, 10);
+    $oldArray = explode('.', $array);
+    $newArray = array_chunk($oldArray, 10);
     foreach($newArray as $array){
         $finalArr = implode('.', $array);
         echo '<div class="post-text">';
@@ -60,5 +80,66 @@ function return_date($date){
 }
 
 
+/**
+ * Return new string
+ * @param $string
+ */
 
+function return_string($string) {
+    return str_replace('-', ' ', $string);
+}
 
+/**
+ * Shows 404.php
+ * @param none
+ */
+
+function show_404(){
+    header('Location: '.BASE_URL.'sub_pages/404.php');
+	die();
+}
+
+/**
+ * Get item by id from $_GET['id']
+ * @param none
+ */
+
+function get_item(){
+    if(!isset($_GET['id']) || empty($_GET['id'])){
+        return false;
+    }
+
+    global $dbh;
+
+    $id = $_GET['id'];
+    $item = $dbh->query("SELECT * FROM posts WHERE id = $id");
+    
+    if(!$item){
+        return false;
+    } 
+
+    return $item;
+}
+
+/**
+ * Redirects you to previous page
+ * @param $page, $status_code
+ */
+
+function redirect( $page, $status_code = 302 )
+{
+    global $base_url;
+
+    if ( $page === 'back' )
+    {
+        $location = $_SERVER['HTTP_REFERER'];
+    }
+    else
+    {
+        $page = ltrim($page, '/');
+        $location = "$base_url/$page";
+    }
+
+    header("Location: $location", true, $status_code);
+    die();
+}

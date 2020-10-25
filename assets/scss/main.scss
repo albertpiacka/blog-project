@@ -19,6 +19,8 @@
 // 4. Components of page, buttons
 @import
   // 'components/side-menu',
+  'components/alerts',
+  'components/formStyles',
   'components/header',
   'components/main',
   'components/article',
@@ -27,9 +29,14 @@
 
 // 5. Page-specific styles
 @import
+  'pages/edit',
+  'pages/delete',
   'pages/gallery',
   'pages/add-post',
   'pages/home',
-  'pages/posts';
+  'pages/posts',
+  'pages/profile',
+  'pages/sign-in',
+  'pages/sign-up';
 
 

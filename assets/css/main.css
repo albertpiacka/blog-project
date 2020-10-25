@@ -4,6 +4,7 @@ html {
   --color-text: #000;
   --color-shadow: #fff;
   --bg-article: #4d4949;
+  --bg-article-darken: #3d3b3b;
   --color-button-bg: #000;
   --color-button-switch: #fff;
 }
@@ -45,7 +46,7 @@ p {
 }
 body {
   position: relative;
-  background: var(--bg);
+  background: url("../../assets/img/overlay.png") var(--bg);
 }
 
 html {
@@ -110,6 +111,76 @@ body #strip-menu i {
   font-size: 200%;
 }
 
+.alert {
+  padding: 1em;
+  margin: 0.5em;
+  border-radius: 1em;
+  animation: alertFadeOut 1s ease-in-out 4s forwards;
+  color: #fff;
+}
+
+.alert-success {
+  background: green;
+}
+
+.alert-warning {
+  background: orange;
+}
+
+@keyframes alertFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+    display: none;
+  }
+}
+.sign-up #sign-up-form, .sign-in #sign-in-form, .add-post #add-form, .delete #delete-form, .edit #edit-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 90%;
+  margin: 2em auto;
+}
+.sign-up #sign-up-form input, .sign-in #sign-in-form input, .add-post #add-form input, .delete #delete-form input, .edit #edit-form input, .sign-up #sign-up-form textarea, .sign-in #sign-in-form textarea, .add-post #add-form textarea, .delete #delete-form textarea, .edit #edit-form textarea {
+  margin: 0.5em;
+  padding: 1em;
+  border-radius: 1em;
+  background: var(--bg-article);
+  color: #fafafa;
+}
+.sign-up #sign-up-form textarea, .sign-in #sign-in-form textarea, .add-post #add-form textarea, .delete #delete-form textarea, .edit #edit-form textarea {
+  padding: 1em;
+}
+.sign-up #sign-up-form input[type=file]::-webkit-file-upload-button, .sign-in #sign-in-form input[type=file]::-webkit-file-upload-button, .add-post #add-form input[type=file]::-webkit-file-upload-button, .delete #delete-form input[type=file]::-webkit-file-upload-button, .edit #edit-form input[type=file]::-webkit-file-upload-button {
+  background-color: var(--bg-article);
+  color: #aeaeae;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+}
+.sign-up #sign-up-form input[type=submit], .sign-in #sign-in-form input[type=submit], .add-post #add-form input[type=submit], .delete #delete-form input[type=submit], .edit #edit-form input[type=submit] {
+  width: 30%;
+  margin: auto;
+  padding: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.sign-up #sign-up-form input[type=submit]:hover, .sign-in #sign-in-form input[type=submit]:hover, .add-post #add-form input[type=submit]:hover, .delete #delete-form input[type=submit]:hover, .edit #edit-form input[type=submit]:hover {
+  background: #F49F2C;
+}
+.sign-up #sign-up-form .fa-arrow-left, .sign-in #sign-in-form .fa-arrow-left, .add-post #add-form .fa-arrow-left, .delete #delete-form .fa-arrow-left, .edit #edit-form .fa-arrow-left {
+  display: inline-block;
+  font-size: 2em;
+  padding: 0.5em;
+  color: #fafafa;
+}
+.sign-up #sign-up-form *, .sign-in #sign-in-form *, .add-post #add-form *, .delete #delete-form *, .edit #edit-form * {
+  border: none;
+  outline: none;
+}
+
 header {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -170,6 +241,8 @@ header #logo2 path {
 .home .main .articles article p, .side-menu .articles article p {
   line-height: 1.6em;
   width: 90%;
+  height: 300px;
+  overflow: hidden;
   margin: 1em auto;
 }
 .home .main .articles article .img-container, .side-menu .articles article .img-container {
@@ -178,21 +251,23 @@ header #logo2 path {
   width: 90%;
   height: 20em;
   margin: auto;
+  cursor: pointer;
 }
-.home .main .articles article .img, .side-menu .articles article .img {
+.home .main .articles article img, .side-menu .articles article img {
   width: 100%;
   height: 100%;
   background-position: center;
   background-size: cover;
   transition: 1s transform ease;
+  cursor: pointer;
 }
-.home .main .articles article .img:hover, .side-menu .articles article .img:hover {
+.home .main .articles article img:hover, .side-menu .articles article img:hover {
   transform: scale(1.2);
 }
 
 .header-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   width: 90%;
   margin: auto;
 }
@@ -237,9 +312,41 @@ header #logo2 path {
   width: 6em;
   height: 6em;
   border-radius: 50%;
-  border: 0.1em solid #fafafa;
   margin: 2em auto;
   cursor: pointer;
+  overflow: hidden;
+}
+.side-menu .account-info img {
+  width: 100%;
+  height: 100%;
+}
+.side-menu .account-controls {
+  margin: 2em auto;
+  width: 100%;
+  text-align: center;
+}
+.side-menu .account-controls button {
+  border-radius: 0.5em;
+  outline: none;
+  border: none;
+  width: 40%;
+  padding: 0.5em;
+  color: #fafafa;
+}
+.side-menu .account-controls .sign-up {
+  background: #F49F2C;
+  transition: background 0.5s ease;
+}
+.side-menu .account-controls .sign-up:hover {
+  background: #e4a348;
+}
+.side-menu .account-controls .sign-in {
+  background: transparent;
+  border: 0.1em solid #aaa;
+  transition: border 0.5s ease;
+}
+.side-menu .account-controls .sign-in:hover {
+  border: 0.1em solid #F49F2C;
 }
 .side-menu .content-container {
   padding: 1em;
@@ -259,8 +366,9 @@ header #logo2 path {
 .side-menu .articles article h2 {
   position: relative;
   top: 1em;
-  left: 0.5em;
+  left: 0.2em;
   z-index: 2;
+  font-size: 1.8em;
 }
 .side-menu .ul-menu li {
   margin: 0.5em 0;
@@ -331,12 +439,13 @@ header #logo2 path {
 }
 
 .toggle-container {
-  position: absolute;
+  position: fixed;
   top: 2.5em;
   right: 1em;
+  z-index: 1000;
 }
 
-input[type=checkbox] {
+#switch {
   height: 0;
   width: 0;
   visibility: hidden;
@@ -384,59 +493,6 @@ html.transition *:before,
 html.transition *:after {
   transition: all 750ms !important;
   transition-delay: 0 !important;
-}
-
-.add-post #myForm {
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 50%;
-  margin: 2em auto;
-}
-.add-post #myForm input, .add-post #myForm textarea {
-  margin: 0.5em;
-  padding: 0.5em;
-  border-radius: 1em;
-  background: var(--bg-article);
-  color: #fafafa;
-}
-.add-post #myForm textarea {
-  padding: 1em;
-}
-.add-post #myForm input:nth-of-type(1) {
-  padding: 1em;
-}
-.add-post #myForm input[type=submit] {
-  width: 50%;
-  margin: auto;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-.add-post #myForm input[type=submit]:hover {
-  background: #F49F2C;
-}
-.add-post #myForm *, .add-post #myForm *:focus {
-  border: none;
-  outline: none;
-}
-.add-post .post {
-  background: var(--bg-article);
-  color: #fafafa;
-  border-radius: 1em;
-  position: relative;
-  margin: 2em auto;
-  padding: 1em;
-  width: 70%;
-}
-.add-post .fadeIn {
-  animation: fadeIn 0.5s ease forwards;
-}
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
 }
 
 .home .main .articles-heading {
@@ -490,7 +546,7 @@ html.transition *:after {
   color: #fafafa;
   border-radius: 1em;
   width: 80%;
-  margin: 2em auto;
+  margin: 4em auto;
 }
 .posts .posts-wrapper .post .img-container {
   width: 100%;
@@ -498,14 +554,13 @@ html.transition *:after {
   overflow: hidden;
   border-radius: 1em 1em 0 0;
 }
-.posts .posts-wrapper .post .img-container .img {
+.posts .posts-wrapper .post .img-container img {
   width: 100%;
   height: 100%;
   border-radius: 1em 1em 0 0;
   transition: 1s transform ease;
-  background: url("../img/img-1.jpg") 30% 50%;
 }
-.posts .posts-wrapper .post .img-container .img:hover {
+.posts .posts-wrapper .post .img-container img:hover {
   transform: scale(1.2);
 }
 .posts .posts-wrapper .post .post-container {
@@ -513,17 +568,238 @@ html.transition *:after {
 }
 .posts .posts-wrapper .post .post-header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
   border-bottom: 1px dotted #aaa;
 }
 .posts .posts-wrapper .post .post-header .post-author {
   text-align: right;
+  padding: 1em;
+}
+.posts .posts-wrapper .post .post-header .post-author a {
+  display: block;
+  padding: 0.3em;
+}
+.posts .posts-wrapper .post .post-header .post-author a:first-of-type {
+  font-size: 1.3em;
+}
+.posts .posts-wrapper .post .post-header .post-author i {
+  transform: scale(1.2);
+}
+.posts .posts-wrapper .post .post-header .post-author .fa-minus {
+  margin-right: 0.3em;
+}
+.posts .posts-wrapper .post .post-header .post-title {
+  padding: 1em;
+}
+.posts .posts-wrapper .post .post-header .post-title h1 {
+  margin: 0;
+}
+.posts .posts-wrapper .post .post-header .post-title span {
+  margin: 1em 0;
+  display: block;
 }
 .posts .posts-wrapper .post .post-body .post-text p {
   line-height: 1.7em;
   width: 70%;
   clear: both;
   padding: 1em;
+}
+
+.scaled {
+  animation: scaled 1s ease forwards;
+}
+
+@keyframes scaled {
+  from {
+    transform: scale(1);
+    width: 80%;
+  }
+  to {
+    transform: scale(1.05);
+    width: 100%;
+  }
+}
+.unscaled {
+  animation: unscaled 1s ease forwards;
+}
+
+@keyframes unscaled {
+  from {
+    transform: scale(1.05);
+    width: 100%;
+  }
+  to {
+    transform: scale(1);
+    width: 80%;
+  }
+}
+.profile .profile-box {
+  width: 90%;
+  margin: 3em auto;
+  padding: 2em;
+  color: #fafafa;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+}
+.profile .profile-box .img-container {
+  border-radius: 1em;
+  background-color: var(--bg-article);
+  overflow: hidden;
+  max-height: 25em;
+}
+.profile .profile-box .img-container img {
+  width: 100%;
+  height: 100%;
+}
+.profile .profile-box .info-container {
+  border-radius: 1em;
+  padding: 1em;
+  background-color: var(--bg-article);
+}
+.profile .profile-box .info-container .edit-profile {
+  text-align: right;
+}
+.profile .profile-box .info-container .edit-profile .fa-user-edit {
+  font-size: 2em;
+  padding: 0.2em;
+}
+.profile .profile-box .info-container .input-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-radius: 1em;
+  background: var(--bg-article-darken);
+  margin: 0.2em 0;
+}
+.profile .profile-box .info-container .input-box span {
+  margin: auto 0;
+  padding: 0 0.6em;
+}
+.profile .profile-box .info-container .input-box div {
+  padding: 1em;
+}
+.profile .profile-box .info-container .box-2 * {
+  padding: 0 0.6em;
+  margin: 0.3em 0;
+}
+
+.edit-profile .go-back {
+  width: 90%;
+  margin: auto;
+  margin-top: 5em;
+  padding: 0 2em;
+}
+.edit-profile .go-back .fa-arrow-left {
+  display: inline-block;
+  font-size: 2em;
+  color: #fafafa;
+}
+.edit-profile #edit-profile-form {
+  width: 90%;
+  margin: auto;
+  padding: 2em;
+  color: #fafafa;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-column-gap: 1em;
+  grid-row-gap: 1em;
+}
+.edit-profile #edit-profile-form .img-container {
+  border-radius: 1em;
+  background-color: var(--bg-article);
+  overflow: hidden;
+  max-height: 20em;
+  position: relative;
+}
+.edit-profile #edit-profile-form .img-container:hover .userImg {
+  opacity: 0.6;
+}
+.edit-profile #edit-profile-form .img-container:hover .insertImg {
+  opacity: 0.8;
+}
+.edit-profile #edit-profile-form .img-container img {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.edit-profile #edit-profile-form .img-container .insertImg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 5em;
+  opacity: 0;
+}
+.edit-profile #edit-profile-form .info-container {
+  background-color: var(--bg-article);
+  border-radius: 1em;
+}
+.edit-profile #edit-profile-form .box-1 {
+  border-radius: 1em;
+  padding: 1em 0;
+  width: 90%;
+  margin: auto;
+  background-color: var(--bg-article);
+}
+.edit-profile #edit-profile-form .box-1 .input-box {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.edit-profile #edit-profile-form .box-1 .input-box span {
+  margin: auto 0;
+}
+.edit-profile #edit-profile-form .box-2 textarea {
+  display: block;
+  width: 90%;
+  margin: auto;
+}
+.edit-profile #edit-profile-form .box-2 input[type=submit] {
+  width: 30%;
+  margin: 0.3em auto;
+  display: block;
+  padding: 1em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.edit-profile #edit-profile-form .box-2 input[type=submit]:hover {
+  background: #F49F2C;
+}
+.edit-profile #edit-profile-form .box-2 span {
+  display: block;
+  width: 90%;
+  margin: auto;
+  padding: 1em 0;
+  text-align: left;
+}
+.edit-profile #edit-profile-form input, .edit-profile #edit-profile-form textarea {
+  margin: 0.5em;
+  padding: 1em;
+  border-radius: 1em;
+  background: var(--bg-article-darken);
+  color: #fafafa;
+  border: none;
+  outline: none;
+}
+
+.sign-in #sign-in-form {
+  width: 40%;
+  padding: 1em;
+  border-radius: 0.5em;
+  transform: translateY(50%);
+  position: relative;
+  top: 5%;
+}
+
+.sign-up #sign-up-form {
+  width: 40%;
+  padding: 1em;
+  border-radius: 0.5em;
+  transform: translateY(50%);
+  position: relative;
+  top: -10%;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -1,0 +1,19 @@
+<?php
+
+    require('config.php');
+
+    $id = $_POST['id'];
+
+    $post_id = $dbh->query("DELETE FROM posts 
+            WHERE id = $id
+    ");
+
+    if($post_id){
+        $msg->success('The post was successfully deleted!');
+        header('Location: '.BASE_URL.'posts.php');
+        die(); 
+    }
+
+    
+
+    

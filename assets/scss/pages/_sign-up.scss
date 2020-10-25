@@ -1,0 +1,14 @@
+// -----------------------------------------------------------------------------
+// This file contains styles that are specific to the sign up page.
+// -----------------------------------------------------------------------------
+.sign-up {
+    #sign-up-form {
+        @extend %formStyles;
+        width: 40%;
+        padding: 1em;
+        border-radius: .5em;
+        transform: translateY(50%);
+        position: relative;
+        top: -10%;
+    }   
+}

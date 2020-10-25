@@ -1,15 +1,34 @@
 <?php
 	require('../_inc/config.php');
 
-	function return_string($string) {
-		return str_replace('-', ' ', $string);
-	}
-
 	$page_name = basename($_SERVER['SCRIPT_NAME'], '.php');
 
 	$new_name = return_string($page_name);
 
 	if($page_name == 'index') $page_name = 'home';
+	if($new_name == 'index') $new_name = 'home';
+
+	$item = get_item();
+	if(!$item) show_404();
+
+	$post = $item->fetchAll();
+
+	if (!$auth->isLogged()) {
+		header('HTTP/1.0 403 Forbidden');
+		echo "Forbidden";
+		echo '<a href="../index.php">Home</a>';
+	
+		die();
+	} else if($auth->isLogged()){
+		$uid = $auth->getSessionUID($_COOKIE[$auth_config->cookie_name]);
+
+		$user = $auth->getUser($uid);
+
+		$user_id = $user['uid'];
+
+		$users_info = $dbh->query("SELECT * FROM users_info WHERE user_id = $user_id");
+		$info = $users_info->fetch();
+	}
 	
 ?>
 
@@ -33,6 +52,13 @@
 
 		<div class="side-menu">
 			<div class="account-info">
+				<?php
+					if($auth->isLogged() && !$info['user_img']){
+						echo '<a href="profile.php"><img src="../assets/img/user-default.png" alt="#"></a>';
+					} else {
+						echo '<a href="profile.php"><img src="../files/'.$info['user_img'].'" alt="#"></a>';
+					}
+				?>
 			</div>
 
 			<div class="content-container">
@@ -47,19 +73,22 @@
 				</section>
 
 				<section class="articles">
-					<article>
-						<h2>#Poached madness</h2>
-						<div class="img-container">
-							<div style="background-image: url('../assets/img/img-1.jpg')" class="img img1"></div>
-						</div>
-					</article>
+					<?php
 
-					<article>
-						<h2>How to ferment anything</h2>
-						<div class="img-container">
-							<div style="background-image: url('../assets/img/img-2.jpg')" class="img img2"></div>
-						</div>
-					</article>
+						$query = $dbh->query("SELECT * FROM posts ORDER by id DESC");
+
+						$postPreviews = $query->fetchAll();
+
+						foreach($postPreviews as $preview){
+							echo '<article class="article-'.$preview['id'].'">';
+							echo	'<h2>'.$preview['title'].'</h2>';
+							echo	'<div class="img-container">';
+							echo		'<a href="'.BASE_URL.'posts.php#post-'.$preview['id'].'"><img src="../files/'.$preview['img_dir'].'" alt=""></a>';
+							echo	'</div>';
+							echo '</article>';
+						}
+
+					?>
 				</section>
 			</div>
 
@@ -76,7 +105,7 @@
 				</div>
 				<header>
 					
-					<?php include('../_partials/svg-heading.php') ?>
+					<?php include_once('../_partials/svg-heading.php') ?>
 					<ul>
 						<li>
 							<a href="#"><i class="fas fa-hashtag"></i></a>
@@ -91,29 +120,26 @@
 					
                 </header>
 
-                <section class="edit-section">
-                    <?php 
-                        $id = $_GET['id'];
-                        $query = $DB->query("SELECT * FROM posts WHERE id = $id");
-                        $post = $query->fetchAll();
-                    ?>
-                    <form id="myForm" action="../_inc/edit-post.php" method="post">
-                        <input name="title" type="text" placeholder="<?php echo $post[0]['title']?>" id="title">
-                        <input name="id" type="hidden" value="<?php echo $_GET['id']?>">
-                        <textarea name="message" id="message" cols="30" rows="10" placeholder="Type something"><?php echo $post[0]['text']?></textarea>
-                        <input type="submit">
-                    </form>
-                </section>
+				
 
-
-
-
+                <div class="form-container">
+					<form id="edit-form" action="../_inc/edit-post.php" method="post">
+						<div class="flash-message">
+							<?php $msg->display(); ?>
+						</div>
+						<a href="<?php echo BASE_URL.'posts.php' ?>"><i class="fas fa-arrow-left"></i></a>
+						<input name="title" type="text" value="<?php echo $post[0]['title']?>" id="title">
+						<input name="id" type="hidden" value="<?php echo $_GET['id']?>">
+						<input name="txtOldLength" id="txtOldLength" type="hidden">
+						<input name="txtNewLength" id="txtNewLength" type="hidden">
+						<input name="titleOldLength" id="titleOldLength" type="hidden">
+						<input name="titleNewLength" id="titleNewLength" type="hidden">
+						<textarea name="message" id="message" cols="30" rows="20" placeholder="Type something"><?php echo $post[0]['text']?></textarea>
+						<input type="submit" value="Edit">
+					</form>
+				</div>
 
 	    	</div>
 
                             
-        <script src="<?php echo BASE_URL ?>assets/js/post.module.js"></script>
-		<script src="<?php echo BASE_URL ?>assets/js/script.js"></script>
-
-	</body>
-</html>
+<?php include_once('../_partials/footer.php') ?>

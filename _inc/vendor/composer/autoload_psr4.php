@@ -10,6 +10,7 @@ return array(
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
     'ReCaptcha\\' => array($vendorDir . '/google/recaptcha/src/ReCaptcha'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
+    'Plasticbrain\\FlashMessages\\' => array($vendorDir . '/plasticbrain/php-flash-messages/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'PHPAuth\\' => array($vendorDir . '/phpauth/phpauth'),
     'Medoo\\' => array($vendorDir . '/catfan/medoo/src'),

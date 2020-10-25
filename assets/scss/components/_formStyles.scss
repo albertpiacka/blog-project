@@ -1,0 +1,52 @@
+%formStyles {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 90%;
+    margin: 2em auto;
+    input, textarea {
+        margin: .5em;
+        padding: 1em;
+        border-radius: 1em;
+        background: var(--bg-article);
+        color: $color-article; 
+    }
+
+    textarea {
+        padding: 1em;
+    }
+
+    input[type="file"]::-webkit-file-upload-button{
+        background-color: var(--bg-article);
+        color: darken($color-article, 30%);
+        cursor: pointer;
+        outline: none;
+        border: none;
+        filter:progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+    }
+
+    input[type="submit"]{
+        width: 30%;
+        margin: auto;
+        padding: 1em;
+        cursor: pointer;
+        transition: background .3s ease;
+        &:hover {
+            background: $color-bg-btn;
+        }
+    }
+
+    .fa-arrow-left {
+        display: inline-block;
+        font-size: 2em;
+        padding: .5em;
+        color: $color-article; 
+    }
+
+    *, *:focus {
+        border: none;
+        outline: none;
+    }
+}
+
+
+
