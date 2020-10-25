@@ -4,9 +4,17 @@
 
     $message = $_POST['message'];
     $title = $_POST['title'];
-    $img = $_POST['img_url'];
 
-    $id = $DB->query("INSERT INTO posts (text, title, img_url) VALUES ('$message', '$title', '$img')");
+    $name = $_FILES['file']['name'];
+    $target_dir = "C:/laragon/www/blog-project/files/";
+    $file = basename($_FILES["file"]["name"]);
+
+    $user_id = $_POST['user_id'];
+    $user_name = $_POST['user_name'];
+
+    move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name);
+
+    $id = $dbh->query("INSERT INTO posts (text, title, img_dir, user_id, user_name) VALUES ('$message', '$title', '$file', '$user_id', '$user_name')");
 
     if($id){
         // $json = json_encode([$message, $title]);
