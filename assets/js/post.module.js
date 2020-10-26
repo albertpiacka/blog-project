@@ -1,66 +1,65 @@
-var createPost = (function(){
+// var createPost = (function(){
 
-    var posts = document.querySelector('.posts'),
-        textarea = document.getElementById('message'),
-        titlearea = document.getElementById('title');
+//     var posts = document.querySelector('.posts'),
+//         textarea = document.getElementById('message'),
+//         titlearea = document.getElementById('title');
 
-    function sendForm(form){
-        var url = form.getAttribute('action');
-    
-        const formData = new FormData(form);
-    
-        fetch(url, {
-            method: 'POST',
-            body: formData
-        }).then(function(response){
-            return response.text();
-        }).then(function(text){
-            var post = JSON.parse(text);
+//     function sendForm(form){
+//         var url = form.getAttribute('action');
 
-            var newPost = document.createElement('div');
-            var title = document.createElement('div');
-            var h3 = document.createElement('h3');
-            var text = document.createElement('div');
-            var p = document.createElement('p');
+//         const formData = new FormData(form);
 
-            newPost.setAttribute('class', 'post');
-            title.setAttribute('class', 'title');
-            text.setAttribute('class', 'text');
+//         fetch(url, {
+//             method: 'POST',
+//             body: formData
+//         }).then(function(response){
+//             return response.text();
+//         }).then(function(text){
+//             var post = JSON.parse(text);
 
-            h3.innerText = post[1];
-            p.innerText = post[0];
-            
-            title.append(h3);
-            text.append(p);
+//             var newPost = document.createElement('div');
+//             var title = document.createElement('div');
+//             var h3 = document.createElement('h3');
+//             var text = document.createElement('div');
+//             var p = document.createElement('p');
 
-            newPost.append(title, text);
-            newPost.classList.add('fadeIn');
+//             newPost.setAttribute('class', 'post');
+//             title.setAttribute('class', 'title');
+//             text.setAttribute('class', 'text');
 
-            posts.append(newPost);
+//             h3.innerText = post[1];
+//             p.innerText = post[0];
 
-            textarea.value = '';
-            titlearea.value = '';
+//             title.append(h3);
+//             text.append(p);
 
-            console.log(post);
+//             newPost.append(title, text);
+//             newPost.classList.add('fadeIn');
 
-        }).catch(function(response){
-            return;
-        });
-    }
+//             posts.append(newPost);
 
-    var createPost = function(){
-        var form = document.getElementById('myForm');
+//             textarea.value = '';
+//             titlearea.value = '';
 
-        if(form){
-            form.addEventListener('submit', function(e){
-                e.preventDefault();
-                sendForm(form);
-            });
-        }
-    }
+//             console.log(post);
 
-    return {
-        createPost: createPost
-    }
-}());
+//         }).catch(function(response){
+//             return;
+//         });
+//     }
 
+//     var createPost = function(){
+//         var form = document.getElementById('myForm');
+
+//         if(form){
+//             form.addEventListener('submit', function(e){
+//                 e.preventDefault();
+//                 sendForm(form);
+//             });
+//         }
+//     }
+
+//     return {
+//         createPost: createPost
+//     }
+// }());

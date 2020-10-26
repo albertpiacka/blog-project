@@ -84,6 +84,44 @@
                     }  
                 }
             }
+
+            .post-footer {
+                .comments-container {
+                    padding: 1em;
+                    .comment {
+                        margin: 1em 0;
+                        padding: 1em;
+                        border-radius: 1em;
+                        border: 1px solid var(--bg-article-darken);
+                        h3 {
+                            color: darken($color-article, 20%);
+                        }
+                    }
+                }
+                form {
+                    @extend %formStyles;
+                    textarea {
+                        background: var(--bg-article-darken);
+                    }
+                    input {
+                        border: 1px solid var(--bg-article-darken);
+                    }
+                }
+            }
+            
+            .fadeIn {
+                animation: fadeIn .5s ease forwards;
+            }
+            
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+            
+                to {
+                    opacity: 1;
+                }
+            }
         }
     }
 }

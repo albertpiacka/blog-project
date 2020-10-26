@@ -15,7 +15,7 @@
 										echo '<div id="post-'.$post['id'].'" class="post post-'.$post['id'].'">';
 										echo 	'<div class="img-container">';
 										if($post['img_dir']){
-											echo 		'<img src="files/'.$post['img_dir'].'" alt="haha">';
+											echo 		'<img src="assets/files/'.$post['img_dir'].'" alt="haha">';
 										} else {
 											echo 		'<div class="empty-div	"></div>';
 										}
@@ -50,6 +50,29 @@
 															return_paragraphs($post['text']);
 										echo     		'</div>';
 										echo 		'</div>';
+										
+										echo		'<div class="post-footer">';
+										echo			'<div class="comments-container">';
+										$post_id = $post['id'];
+										$queryComments = $dbh->query("SELECT * FROM comments WHERE post_id = $post_id");
+										$comments = $queryComments->fetchAll();
+										foreach($comments as $comment){
+											echo				'<div class="comment">';
+											echo						'<h3>'.$comment['user_name'].'</h3>';
+											echo						'<p>'.$comment['comment'].'</p>';
+											echo				'</div>';
+										}
+										echo			'</div>';
+										if($auth->isLogged()){
+											echo			'<form class="comment-form" id="form-'.$post['id'].'" action="_inc/add-comment.php" method="post">';
+											echo				'<textarea name="comment" cols="30" rows="10"></textarea>';
+											echo				'<input name="user_id" type="hidden" value="'.$user_id.'">';
+											echo				'<input name="post_id" type="hidden" value="'.$post['id'].'">';
+											echo 				'<input name="user_name" type="hidden" value="'.$info['first_name'].' '.$info['last_name'].'">';
+											echo				'<input type="submit" value="Send">';
+											echo			'</form>';
+										}
+										echo		'</div>';
 										echo 	'</div>';
 										echo '</div>';
 									}
@@ -63,6 +86,7 @@
 		</div>
 
 <?php include_once('_partials/footer.php') ?>	
+
 
 
 

@@ -14,6 +14,9 @@
       $user = $auth->getUser($uid);
 
       $user_id = (int)$user['uid'];
+
+      $users_info = $dbh->query("SELECT * FROM users_info WHERE user_id = $user_id");
+		  $info = $users_info->fetch();
     }
 
     $first_name = $_POST['first_name'];
@@ -28,9 +31,13 @@
     $target_dir = "C:/laragon/www/blog-project/files/";
     $file = basename($_FILES["file"]["name"]);
 
+    if($file == ''){
+      $file = $info['user_img'];
+    } 
+
     move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name);
 
-    $id = $dbh->query("UPDATE users_info SET 
+    $user_update = $dbh->query("UPDATE users_info SET 
               first_name = '$first_name',
               location = '$location',
               last_name = '$last_name',
@@ -42,7 +49,14 @@
           WHERE user_id = $user_id;
     ");
 
-    if($id){
+    $user_name = $first_name.' '.$last_name;
+
+    $post_update = $dbh->query("UPDATE posts SET
+              user_name = '$user_name'
+            WHERE user_id = $user_id;
+    ");
+
+    if($user_update && $post_update){
         header('Location: '.BASE_URL.'sub_pages/profile.php');
         die(); 
     } else {

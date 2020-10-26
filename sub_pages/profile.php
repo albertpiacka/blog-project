@@ -55,7 +55,7 @@
 					if($auth->isLogged() && !$info['user_img']){
 						echo '<img src="../assets/img/user-default.png" alt="#">';
 					} else {
-						echo '<img src="../files/'.$info['user_img'].'" alt="#">';
+						echo '<img src="../assets/files/'.$info['user_img'].'" alt="#">';
 					}
 				?>
 			</div>
@@ -89,7 +89,7 @@
 							echo '<article class="article-'.$post['id'].'">';
 							echo	'<h2>'.$post['title'].'</h2>';
 							echo	'<div class="img-container">';
-							echo		'<a href="'.BASE_URL.'posts.php#post-'.$post['id'].'"><img src="../files/'.$post['img_dir'].'" alt=""></a>';
+							echo		'<a href="'.BASE_URL.'posts.php#post-'.$post['id'].'"><img src="../assets/files/'.$post['img_dir'].'" alt=""></a>';
 							echo	'</div>';
 							echo '</article>';
 						}
@@ -124,7 +124,7 @@
 								if(!$info['user_img']){
 									echo '<img src="../assets/img/user-default.png" alt="#">';
 								} else {
-									echo '<img src="../files/'.$info['user_img'].'" alt="#">';
+									echo '<img src="../assets/files/'.$info['user_img'].'" alt="#">';
 								}
 							?>
 						</div>
