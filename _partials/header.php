@@ -50,7 +50,7 @@
 						if(!$info['user_img']){
 							echo '<a href="sub_pages/profile.php"><img src="assets/img/user-default.png" alt="#"></a>';
 						} else if($info['user_img']){
-							echo '<a href="sub_pages/profile.php"><img src="files/'.$info['user_img'].'" alt="#"></a>';
+							echo '<a href="sub_pages/profile.php"><img src="assets/files/'.$info['user_img'].'" alt="#"></a>';
 						} 
 					?>
 					
@@ -101,7 +101,7 @@
 							echo '<article class="article-'.$post['id'].'">';
 							echo	'<h2>'.$post['title'].'</h2>';
 							echo	'<div class="img-container">';
-							echo		'<a href="'.BASE_URL.'posts.php#post-'.$post['id'].'"><img src="files/'.$post['img_dir'].'" alt=""></a>';
+							echo		'<a href="'.BASE_URL.'posts.php#post-'.$post['id'].'"><img src="assets/files/'.$post['img_dir'].'" alt=""></a>';
 							echo	'</div>';
 							echo '</article>';
 						}

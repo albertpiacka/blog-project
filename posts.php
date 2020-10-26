@@ -15,7 +15,7 @@
 										echo '<div id="post-'.$post['id'].'" class="post post-'.$post['id'].'">';
 										echo 	'<div class="img-container">';
 										if($post['img_dir']){
-											echo 		'<img src="files/'.$post['img_dir'].'" alt="haha">';
+											echo 		'<img src="assets/files/'.$post['img_dir'].'" alt="haha">';
 										} else {
 											echo 		'<div class="empty-div	"></div>';
 										}
@@ -64,7 +64,7 @@
 										}
 										echo			'</div>';
 										if($auth->isLogged()){
-											echo			'<form id="form-'.$post['id'].'" action="_inc/add-comment.php" method="post">';
+											echo			'<form class="comment-form" id="form-'.$post['id'].'" action="_inc/add-comment.php" method="post">';
 											echo				'<textarea name="comment" cols="30" rows="10"></textarea>';
 											echo				'<input name="user_id" type="hidden" value="'.$user_id.'">';
 											echo				'<input name="post_id" type="hidden" value="'.$post['id'].'">';

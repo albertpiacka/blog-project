@@ -6,9 +6,9 @@
 
 //     function sendForm(form){
 //         var url = form.getAttribute('action');
-    
+
 //         const formData = new FormData(form);
-    
+
 //         fetch(url, {
 //             method: 'POST',
 //             body: formData
@@ -29,7 +29,7 @@
 
 //             h3.innerText = post[1];
 //             p.innerText = post[0];
-            
+
 //             title.append(h3);
 //             text.append(p);
 

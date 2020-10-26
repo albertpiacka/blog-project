@@ -33,7 +33,7 @@
 								echo	'</div>';
 
 								echo 	'<div class="img-container">';
-								echo		'<a href="'.BASE_URL.'posts.php#post-'.$post['id'].'"><img src="files/'.$post['img_dir'].'" alt=""></a>';
+								echo		'<a href="'.BASE_URL.'posts.php#post-'.$post['id'].'"><img src="assets/files/'.$post['img_dir'].'" alt=""></a>';
 								echo	'</div>';
 								echo	'<p>';
 								echo		$post['text'];
