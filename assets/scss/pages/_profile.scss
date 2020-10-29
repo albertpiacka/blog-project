@@ -10,6 +10,10 @@
         grid-column-gap: 1em;
         grid-row-gap: 1em;
 
+        @media (max-width: 1000px){
+            display: block;
+        }
+
         .img-container {
             border-radius: 1em;
             background-color: var(--bg-article);
@@ -90,6 +94,9 @@
         grid-template-columns: 1fr 3fr;
         grid-column-gap: 1em;
         grid-row-gap: 1em;
+        @media (max-width: 1000px){
+            display: block;
+        }
 
         .img-container {
             border-radius: 1em;

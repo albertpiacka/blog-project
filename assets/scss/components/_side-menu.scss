@@ -80,6 +80,9 @@
   
   height: 100%;
   width: $side-menu-width;
+  @media (max-width: 460px){
+    width: 250px;
+  }
 
   &::-webkit-scrollbar {
     width: 0;
@@ -203,6 +206,9 @@
 
   #strip-menu i {
     animation: .5s menuRight ease forwards;
+    @media (max-width: 460px){
+      animation: .5s menuRightMedia460 ease forwards;
+    }
   }
 
 
@@ -216,6 +222,11 @@
     100%{left: 5em};
   }
 
+  @keyframes menuRightMedia460 {
+    0%{left: 0.5em};
+    100%{left: 50%};
+  }
+
 }
 
 .menu-inactive {
@@ -226,6 +237,9 @@
 
   #strip-menu i {
     animation: .4s menuLeft ease forwards;
+    @media (max-width: 460px){
+      animation: .5s menuLeftMedia460 ease forwards;
+    }
   }
 
   @keyframes slideLeft {
@@ -235,6 +249,11 @@
 
   @keyframes menuLeft {
     0%{left: 5em};
+    100%{left: .2em};
+  }
+
+  @keyframes menuLeftMedia460 {
+    0%{left: 50%};
     100%{left: .2em};
   }
 

@@ -24,9 +24,7 @@ function returnData(url) {
     }).then(function (html) {
         // Initialize the DOM parser
         var parser = new DOMParser();
-        let overlayInit = document.querySelector('.overlay');
 
-        var main = document.querySelector('.content-container');
         let body = document.querySelector('body');
         let wrapper = document.querySelector('.wrapper');
         let sideMenu = document.querySelector('.side-menu');
