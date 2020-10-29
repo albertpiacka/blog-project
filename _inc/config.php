@@ -15,7 +15,7 @@ $whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
 $whoops->register();
 
 //Constants 
-define('BASE_URL', 'http://localhost/blog-project/');
+define('BASE_URL', ' https://4e82510064bc.ngrok.io/blog-project/');
 define('APP_PATH', realpath(__DIR__ . '/../') );
 
 
