@@ -283,7 +283,7 @@ header #logo2 path {
   color: var(--color-text);
   position: fixed;
   z-index: 1000;
-  top: 0;
+  top: -0.2em;
   left: 0.2em;
 }
 
@@ -332,6 +332,11 @@ header #logo2 path {
   width: 90%;
   margin: auto;
 }
+@media (max-width: 400px) {
+  .header-container {
+    display: block;
+  }
+}
 .header-container .post-author {
   text-align: right;
   padding: 2em 0;
@@ -342,6 +347,11 @@ header #logo2 path {
 .header-container .post-author .author-name {
   display: block;
 }
+@media (max-width: 400px) {
+  .header-container .post-author {
+    text-align: center;
+  }
+}
 .header-container .title {
   padding: 2em 0;
 }
@@ -351,6 +361,11 @@ header #logo2 path {
   margin: auto 0;
   text-align: left;
   cursor: pointer;
+}
+@media (max-width: 400px) {
+  .header-container .title h1 {
+    text-align: center;
+  }
 }
 
 .side-menu {
@@ -364,6 +379,11 @@ header #logo2 path {
   left: -100%;
   height: 100%;
   width: 300px;
+}
+@media (max-width: 460px) {
+  .side-menu {
+    width: 250px;
+  }
 }
 .side-menu::-webkit-scrollbar {
   width: 0;
@@ -466,6 +486,11 @@ header #logo2 path {
 .menu-active #strip-menu i {
   animation: 0.5s menuRight ease forwards;
 }
+@media (max-width: 460px) {
+  .menu-active #strip-menu i {
+    animation: 0.5s menuRightMedia460 ease forwards;
+  }
+}
 @keyframes slideRight {
   0% {
     left: -100%;
@@ -482,12 +507,25 @@ header #logo2 path {
     left: 5em;
   }
 }
+@keyframes menuRightMedia460 {
+  0% {
+    left: 0.5em;
+  }
+  100% {
+    left: 50%;
+  }
+}
 
 .menu-inactive .side-menu {
   animation: 0.5s slideLeft ease forwards;
 }
 .menu-inactive #strip-menu i {
   animation: 0.4s menuLeft ease forwards;
+}
+@media (max-width: 460px) {
+  .menu-inactive #strip-menu i {
+    animation: 0.5s menuLeftMedia460 ease forwards;
+  }
 }
 @keyframes slideLeft {
   0% {
@@ -505,12 +543,20 @@ header #logo2 path {
     left: 0.2em;
   }
 }
+@keyframes menuLeftMedia460 {
+  0% {
+    left: 50%;
+  }
+  100% {
+    left: 0.2em;
+  }
+}
 
 .toggle-container {
   position: fixed;
-  top: 2.5em;
   right: 1em;
   z-index: 1000;
+  top: 0.4em;
 }
 
 #switch {
@@ -632,6 +678,17 @@ html.transition *:after {
     width: 100%;
   }
 }
+@media (max-width: 330px) {
+  .posts .posts-wrapper .post p {
+    font-size: 0.6em;
+  }
+}
+@media (max-width: 530px) {
+  .posts .posts-wrapper .post h3 {
+    font-size: 1em;
+    margin: 0;
+  }
+}
 .posts .posts-wrapper .post .img-container {
   width: 100%;
   height: 20em;
@@ -655,9 +712,19 @@ html.transition *:after {
   grid-template-columns: 2fr 1fr;
   border-bottom: 1px dotted #aaa;
 }
+@media (max-width: 450px) {
+  .posts .posts-wrapper .post .post-header {
+    display: block;
+  }
+}
 .posts .posts-wrapper .post .post-header .post-author {
   text-align: right;
   padding: 1em;
+}
+@media (max-width: 450px) {
+  .posts .posts-wrapper .post .post-header .post-author {
+    text-align: center;
+  }
 }
 .posts .posts-wrapper .post .post-header .post-author a {
   display: block;
@@ -675,8 +742,18 @@ html.transition *:after {
 .posts .posts-wrapper .post .post-header .post-title {
   padding: 1em;
 }
+@media (max-width: 450px) {
+  .posts .posts-wrapper .post .post-header .post-title {
+    text-align: center;
+  }
+}
 .posts .posts-wrapper .post .post-header .post-title h1 {
   margin: 0;
+}
+@media (max-width: 530px) {
+  .posts .posts-wrapper .post .post-header .post-title h1 {
+    font-size: 1em;
+  }
 }
 .posts .posts-wrapper .post .post-header .post-title span {
   margin: 1em 0;
@@ -756,6 +833,11 @@ html.transition *:after {
   grid-column-gap: 1em;
   grid-row-gap: 1em;
 }
+@media (max-width: 1000px) {
+  .profile .profile-box {
+    display: block;
+  }
+}
 .profile .profile-box .img-container {
   border-radius: 1em;
   background-color: var(--bg-article);
@@ -825,6 +907,11 @@ html.transition *:after {
   grid-template-columns: 1fr 3fr;
   grid-column-gap: 1em;
   grid-row-gap: 1em;
+}
+@media (max-width: 1000px) {
+  .edit-profile #edit-profile-form {
+    display: block;
+  }
 }
 .edit-profile #edit-profile-form .img-container {
   border-radius: 1em;
