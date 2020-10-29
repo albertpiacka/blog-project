@@ -18,6 +18,10 @@ header {
         width: 30%;
         margin: 1em auto;
 
+        @media (max-width: 700px){
+            padding: 0;
+        }
+
         li {
             grid-row-start: 2;
             grid-row-end: 2;
@@ -37,6 +41,11 @@ header {
        margin: 4em; 
        path {
            stroke: var(--color-headings);
+       }
+       @media (max-width: 700px) {
+           width: 50%;
+           margin: auto;
+           margin-top: 4em;
        }
     }
 }

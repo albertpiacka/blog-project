@@ -2,7 +2,7 @@
 
 $widths: (
     "950px": 600px,
-    "800px": 500px
+    "800px": 100%
 );
 
 @each $width, $size in $widths {

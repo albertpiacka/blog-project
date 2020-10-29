@@ -27,7 +27,7 @@ $config = [
         'db_name' => 'blog',
         'server'        => 'localhost',
         'username'      => 'root',
-        'password'      => '',
+        'password'      => 'root',
         'charset'       => 'utf8'
     ]
 

@@ -6,7 +6,7 @@
     $title = $_POST['title'];
 
     $name = $_FILES['file']['name'];
-    $target_dir = "C:/laragon/www/blog-project/files/";
+    $target_dir = "C:/laragon/www/blog-project/assets/files/";
     $file = basename($_FILES["file"]["name"]);
 
     $user_id = $_POST['user_id'];

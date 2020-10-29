@@ -41,7 +41,7 @@ p {
 }
 @media (max-width: 800px) {
   .articles article {
-    max-width: 500px;
+    max-width: 100%;
   }
 }
 body {
@@ -78,6 +78,50 @@ img {
   object-fit: cover;
 }
 
+.overlay {
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 10000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.overlay .form-container {
+  position: fixed;
+  z-index: 100000000;
+  transform: translate(10%, 25%);
+  opacity: 1;
+  width: 80%;
+}
+.overlay .form-container form {
+  width: 100%;
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fadeOut {
+  animation: fadeOut 0.5s ease forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
 @keyframes articleSlide {
   from {
     top: 10em;
@@ -136,23 +180,23 @@ body #strip-menu i {
     display: none;
   }
 }
-.sign-up #sign-up-form, .sign-in #sign-in-form, .posts .posts-wrapper .post .post-footer form, .add-post #add-form, .delete #delete-form, .edit #edit-form {
+.sign-up #sign-up-form, .sign-in #sign-in-form, .posts .posts-wrapper .post .post-footer form, .add-post #add-form, .delete #delete-form, .edit #edit-form, .overlay .form-container form {
   display: grid;
   grid-template-columns: 1fr;
   width: 90%;
   margin: 2em auto;
 }
-.sign-up #sign-up-form input, .sign-in #sign-in-form input, .posts .posts-wrapper .post .post-footer form input, .add-post #add-form input, .delete #delete-form input, .edit #edit-form input, .sign-up #sign-up-form textarea, .sign-in #sign-in-form textarea, .posts .posts-wrapper .post .post-footer form textarea, .add-post #add-form textarea, .delete #delete-form textarea, .edit #edit-form textarea {
+.sign-up #sign-up-form input, .sign-in #sign-in-form input, .posts .posts-wrapper .post .post-footer form input, .add-post #add-form input, .delete #delete-form input, .edit #edit-form input, .overlay .form-container form input, .sign-up #sign-up-form textarea, .sign-in #sign-in-form textarea, .posts .posts-wrapper .post .post-footer form textarea, .add-post #add-form textarea, .delete #delete-form textarea, .edit #edit-form textarea, .overlay .form-container form textarea {
   margin: 0.5em;
   padding: 1em;
   border-radius: 1em;
   background: var(--bg-article);
   color: #fafafa;
 }
-.sign-up #sign-up-form textarea, .sign-in #sign-in-form textarea, .posts .posts-wrapper .post .post-footer form textarea, .add-post #add-form textarea, .delete #delete-form textarea, .edit #edit-form textarea {
+.sign-up #sign-up-form textarea, .sign-in #sign-in-form textarea, .posts .posts-wrapper .post .post-footer form textarea, .add-post #add-form textarea, .delete #delete-form textarea, .edit #edit-form textarea, .overlay .form-container form textarea {
   padding: 1em;
 }
-.sign-up #sign-up-form input[type=file]::-webkit-file-upload-button, .sign-in #sign-in-form input[type=file]::-webkit-file-upload-button, .posts .posts-wrapper .post .post-footer form input[type=file]::-webkit-file-upload-button, .add-post #add-form input[type=file]::-webkit-file-upload-button, .delete #delete-form input[type=file]::-webkit-file-upload-button, .edit #edit-form input[type=file]::-webkit-file-upload-button {
+.sign-up #sign-up-form input[type=file]::-webkit-file-upload-button, .sign-in #sign-in-form input[type=file]::-webkit-file-upload-button, .posts .posts-wrapper .post .post-footer form input[type=file]::-webkit-file-upload-button, .add-post #add-form input[type=file]::-webkit-file-upload-button, .delete #delete-form input[type=file]::-webkit-file-upload-button, .edit #edit-form input[type=file]::-webkit-file-upload-button, .overlay .form-container form input[type=file]::-webkit-file-upload-button {
   background-color: var(--bg-article);
   color: #aeaeae;
   cursor: pointer;
@@ -160,23 +204,23 @@ body #strip-menu i {
   border: none;
   filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
 }
-.sign-up #sign-up-form input[type=submit], .sign-in #sign-in-form input[type=submit], .posts .posts-wrapper .post .post-footer form input[type=submit], .add-post #add-form input[type=submit], .delete #delete-form input[type=submit], .edit #edit-form input[type=submit] {
+.sign-up #sign-up-form input[type=submit], .sign-in #sign-in-form input[type=submit], .posts .posts-wrapper .post .post-footer form input[type=submit], .add-post #add-form input[type=submit], .delete #delete-form input[type=submit], .edit #edit-form input[type=submit], .overlay .form-container form input[type=submit] {
   width: 30%;
   margin: auto;
   padding: 1em;
   cursor: pointer;
   transition: background 0.3s ease;
 }
-.sign-up #sign-up-form input[type=submit]:hover, .sign-in #sign-in-form input[type=submit]:hover, .posts .posts-wrapper .post .post-footer form input[type=submit]:hover, .add-post #add-form input[type=submit]:hover, .delete #delete-form input[type=submit]:hover, .edit #edit-form input[type=submit]:hover {
+.sign-up #sign-up-form input[type=submit]:hover, .sign-in #sign-in-form input[type=submit]:hover, .posts .posts-wrapper .post .post-footer form input[type=submit]:hover, .add-post #add-form input[type=submit]:hover, .delete #delete-form input[type=submit]:hover, .edit #edit-form input[type=submit]:hover, .overlay .form-container form input[type=submit]:hover {
   background: #F49F2C;
 }
-.sign-up #sign-up-form .fa-arrow-left, .sign-in #sign-in-form .fa-arrow-left, .posts .posts-wrapper .post .post-footer form .fa-arrow-left, .add-post #add-form .fa-arrow-left, .delete #delete-form .fa-arrow-left, .edit #edit-form .fa-arrow-left {
+.sign-up #sign-up-form .fa-arrow-left, .sign-in #sign-in-form .fa-arrow-left, .posts .posts-wrapper .post .post-footer form .fa-arrow-left, .add-post #add-form .fa-arrow-left, .delete #delete-form .fa-arrow-left, .edit #edit-form .fa-arrow-left, .overlay .form-container form .fa-arrow-left, .sign-up #sign-up-form .fa-times-circle, .sign-in #sign-in-form .fa-times-circle, .posts .posts-wrapper .post .post-footer form .fa-times-circle, .add-post #add-form .fa-times-circle, .delete #delete-form .fa-times-circle, .edit #edit-form .fa-times-circle, .overlay .form-container form .fa-times-circle {
   display: inline-block;
   font-size: 2em;
   padding: 0.5em;
   color: #fafafa;
 }
-.sign-up #sign-up-form *, .sign-in #sign-in-form *, .posts .posts-wrapper .post .post-footer form *, .add-post #add-form *, .delete #delete-form *, .edit #edit-form * {
+.sign-up #sign-up-form *, .sign-in #sign-in-form *, .posts .posts-wrapper .post .post-footer form *, .add-post #add-form *, .delete #delete-form *, .edit #edit-form *, .overlay .form-container form * {
   border: none;
   outline: none;
 }
@@ -200,6 +244,11 @@ header ul {
   width: 30%;
   margin: 1em auto;
 }
+@media (max-width: 700px) {
+  header ul {
+    padding: 0;
+  }
+}
 header ul li {
   grid-row-start: 2;
   grid-row-end: 2;
@@ -215,6 +264,13 @@ header #logo2 {
 }
 header #logo2 path {
   stroke: var(--color-headings);
+}
+@media (max-width: 700px) {
+  header #logo2 {
+    width: 50%;
+    margin: auto;
+    margin-top: 4em;
+  }
 }
 
 .main {
@@ -237,6 +293,11 @@ header #logo2 path {
   border-radius: 1em;
   position: relative;
   margin: 2em auto;
+}
+@media (max-width: 1299px) {
+  .home .main .articles article, .side-menu .articles article {
+    width: 90%;
+  }
 }
 .home .main .articles article p, .side-menu .articles article p {
   line-height: 1.6em;
@@ -347,6 +408,13 @@ header #logo2 path {
 }
 .side-menu .account-controls .sign-in:hover {
   border: 0.1em solid #F49F2C;
+}
+.side-menu .account-controls .sign-out {
+  background: #F49F2C;
+  transition: background 0.5s ease;
+}
+.side-menu .account-controls .sign-out:hover {
+  background: #e4a348;
 }
 .side-menu .content-container {
   padding: 1em;
@@ -502,6 +570,16 @@ html.transition *:after {
   font-size: 5em;
   font-weight: 900;
 }
+@media (max-width: 760px) {
+  .home .main .articles-heading {
+    font-size: 3em;
+  }
+}
+@media (max-width: 560px) {
+  .home .main .articles-heading {
+    font-size: 2em;
+  }
+}
 .home .main .articles {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
@@ -514,6 +592,7 @@ html.transition *:after {
 @media (max-width: 690px) {
   .home .main .articles {
     display: block;
+    width: 100%;
   }
 }
 .home .main .articles article {
@@ -547,6 +626,11 @@ html.transition *:after {
   border-radius: 1em;
   width: 80%;
   margin: 4em auto;
+}
+@media (max-width: 640px) {
+  .posts .posts-wrapper .post {
+    width: 100%;
+  }
 }
 .posts .posts-wrapper .post .img-container {
   width: 100%;
