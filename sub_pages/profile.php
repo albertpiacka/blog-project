@@ -36,7 +36,7 @@
 	<head>
 		<meta charset="utf-8">
 		<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/fontawesome-free-5.13.0-web/css/all.css">
+		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/node_modules/@fortawesome/fontawesome-free/css/all.css">
 		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/css/normalize.css">
 		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/css/main.css">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -54,6 +54,8 @@
 				<?php
 					if($auth->isLogged() && !$info['user_img']){
 						echo '<img src="../assets/img/user-default.png" alt="#">';
+					} else if($auth->isLogged() && $info['user_img'] == 'Empty') {
+						echo '<img src="../assets/img/user-default.png" alt="#">';
 					} else {
 						echo '<img src="../assets/files/'.$info['user_img'].'" alt="#">';
 					}
@@ -63,7 +65,7 @@
 			<div class="account-controls">
 				<?php
 					if ($auth->isLogged()) {
-						echo '<button class="sign-up"><a href="../_inc/logout.php">Sign out</a></button>';
+						echo '<button class="sign-out"><a href="../_inc/logout.php">Sign out</a></button>';
 					} else {
 						echo '<button class="sign-up"><a href="sign-up.php">Sign up</a></button>';
 						echo '<button class="sign-in"><a href="sign-in.php">Sign in</a></button>';
@@ -122,6 +124,8 @@
 						<div class="img-container">
 							<?php
 								if(!$info['user_img']){
+									echo '<img src="../assets/img/user-default.png" alt="#">';
+								} else if($info['user_img'] == 'Empty') {
 									echo '<img src="../assets/img/user-default.png" alt="#">';
 								} else {
 									echo '<img src="../assets/files/'.$info['user_img'].'" alt="#">';

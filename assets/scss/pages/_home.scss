@@ -11,6 +11,12 @@
 
             font-size: 5em;
             font-weight: 900;
+            @media (max-width: 760px){
+                font-size: 3em;
+            } 
+            @media (max-width: 560px){
+                font-size: 2em;
+            }       
         }
 
         .articles {
@@ -23,6 +29,7 @@
             animation: articleSlide 1s ease forwards;
             @media (max-width: 690px){
                 display: block;
+                width: 100%;
             } 
         
             article {

@@ -4,6 +4,10 @@
     border-radius: 1em;
     position: relative;
     margin: 2em auto;
+    
+    @media (max-width: 1299px){
+        width: 90%;
+    }
 
     p {
         line-height: 1.6em;

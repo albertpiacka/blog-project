@@ -16,6 +16,8 @@
       $user_id = (int)$user['uid'];
 
       $users_info = $dbh->query("SELECT * FROM users_info WHERE user_id = $user_id");
+      $posts_info = $dbh->query("SELECT * FROM posts WHERE user_id = $user_id");
+      $post_info = $posts_info->fetch();
 		  $info = $users_info->fetch();
     }
 
@@ -28,7 +30,7 @@
     $about = $_POST['about'];
 
     $name = $_FILES['file']['name'];
-    $target_dir = "C:/laragon/www/blog-project/files/";
+    $target_dir = "C:/laragon/www/blog-project/assets/files/";
     $file = basename($_FILES["file"]["name"]);
 
     if($file == ''){
@@ -51,17 +53,28 @@
 
     $user_name = $first_name.' '.$last_name;
 
-    $post_update = $dbh->query("UPDATE posts SET
+    if($post_info){
+      $post_update = $dbh->query("UPDATE posts SET
               user_name = '$user_name'
             WHERE user_id = $user_id;
-    ");
+      ");
 
-    if($user_update && $post_update){
+      if($user_update && $post_update){
         header('Location: '.BASE_URL.'sub_pages/profile.php');
         die(); 
-    } else {
+      } else {
         echo 'something went wrong :-(';
+      }
+    } else {
+      if($user_update){
+        header('Location: '.BASE_URL.'sub_pages/profile.php');
+        die(); 
+      } else {
+          echo 'something went wrong :-(';
+      }
     }
+
+  
 
 
     

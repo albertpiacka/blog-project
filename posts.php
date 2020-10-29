@@ -32,7 +32,7 @@
 										$queryUsers = $dbh->query("SELECT * FROM phpauth_users WHERE id = $id");
 
 										$users = $queryUsers->fetchAll();
-										if($post['user_name'] == 'empty'){
+										if($post['user_name'] == 'empty empty'){
 											echo			'<h3 class="author-name">'.$users[0]['email'].'</h3>';
 										} else echo 		'<h3 class="author-name">'.$post['user_name'].'</h3>';
 
