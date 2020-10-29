@@ -44,6 +44,9 @@
     grid-template-columns: 2fr 1fr;
     width: 90%;
     margin: auto;
+    @media (max-width: 400px){
+        display: block;
+    }
     .post-author {
         text-align: right;
         padding: 2em 0;
@@ -52,6 +55,9 @@
         }
         .author-name {
             display: block;
+        }
+        @media (max-width: 400px){
+            text-align: center;
         }
     }
     .title {
@@ -62,6 +68,9 @@
             margin: auto 0;
             text-align: left;
             cursor: pointer;
+            @media (max-width: 400px){
+                text-align: center;
+            }
         }
     }
 }
