@@ -37,7 +37,8 @@
 	<head>
 		<meta charset="utf-8">
 		<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/node_modules/@fortawesome/fontawesome-free/css/all.css">
+		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/node_modules/aos/dist/aos.css">
+		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/css/normalize.css">
 		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/css/main.css">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">

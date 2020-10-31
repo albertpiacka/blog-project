@@ -25,8 +25,6 @@
             width: 80%;
             margin: auto;
             text-align: center;
-            position: relative;
-            animation: articleSlide 1s ease forwards;
             @media (max-width: 690px){
                 display: block;
                 width: 100%;
@@ -50,6 +48,59 @@
                         top: 0;
                         left: 0;
                     }   
+                }
+            }
+        }
+
+        .about-wrapper {
+            text-align: center;
+            margin: 2em auto;
+            h2, h3, p {
+                padding: 1em;
+                color: var(--color-headings);
+            }
+            h2 {
+                font-size: 4em;
+                border-bottom: 1px dotted #aaa;
+                width: 100%;
+            }
+
+            h3 {
+                font-size: 3em;
+            }
+
+            p {
+                font-style: italic;
+                width: 70%;
+                margin: auto;
+            }
+            
+            .info-item {
+                margin: 10em auto;
+                h4 {
+                    font-size: 2em;
+                    color: var(--color-headings);
+                }
+            }
+
+            @media (max-width: 500px){
+                p {
+                    font-size: .8em;
+                }
+                
+                h2 {
+                    font-size: 2em;
+                }
+
+                h3 {
+                    font-size: 1em;
+                }
+
+                .info-item {
+                    margin: 2em auto;
+                    h4 {
+                        font-size: 1em;
+                    }
                 }
             }
         }

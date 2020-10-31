@@ -64,7 +64,8 @@ INSERT INTO `phpauth_config` (`setting`, `value`) VALUES
   ('translation_source', 'php'),
   ('recaptcha_enabled', 0),
   ('recaptcha_site_key', ''),
-  ('recaptcha_secret_key', '');
+  ('recaptcha_secret_key', ''),
+  ('custom_datetime_format', 'Y-m-d H:i');
 
 -- Attempts table
 
@@ -131,3 +132,4 @@ CREATE TABLE `phpauth_emails_banned` (
 
 
 -- 2018-04-12 10:42:00
+users_infousers_info

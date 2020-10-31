@@ -9,7 +9,7 @@
     $register = $auth->register($email, $password, $repeat_password);
 
     if($register){ 
-        $login = $auth->login($email, $password);
+        $login = $auth->login($email, $password, 1);
         if($login){
             $uid = $auth->getSessionUID($_COOKIE[$auth_config->cookie_name]);
 

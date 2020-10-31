@@ -123,7 +123,7 @@ The database table `config` contains multiple parameters allowing you to configu
 * `smtp_password` : the password for the SMTP server
 * `smtp_port` : the port for the SMTP server
 * `smtp_security` : `NULL` for no encryption, `tls` for TLS encryption, `ssl` for SSL encryption
-* `verify_password_min_length` : minimum password length, default is `3`  
+* `verify_password_min_length` : minimum password length, default is `3`
 * `verify_email_min_length` : minimum EMail length, default is `5`
 * `verify_email_max_length` : maximum EMail length, default is `100`
 * `verify_email_use_banlist` : use banlist while checking allowed EMails (see `/files/domains.json`), default is `1` (`true`)
@@ -236,6 +236,20 @@ if (!$auth->isLogged()) {
 ```
 **NB:** required package installed via composer: `composer require phpauth/phpauth:dev-master`!!!
 
+Validate user password in front-end
+-----------------------------------
+
+PHPAuth evaluates the strength of a password on user registration and manually added Users via `addUser()` function. The minimum score of accepted passwords is controlled via the `password_min_score` config-parameter.
+
+In this example, the front-end is based on html, generated via php. The score is passed as a javascript variable like
+
+```
+<?php echo 'let minimum_score =' . $config->password_min_score; ?>
+```
+
+A full example can be found in the source: /examples/html-frontend-password-strength-gui-feedback/index.php
+
+**NB:** requires a database with phpauth tables from database_defs
 
 Custom config sources
 ---------------------
@@ -313,11 +327,13 @@ Available languages:
 * `tr_TR`
 * `uk_UA`
 * `vi_VN`
+* `zh_CN`
+* `zh_TW`
 
 Documentation
 ---------------
 
-All class methods are documented in [the Wiki](https://github.com/PHPAuth/PHPAuth/wiki/Class-Methods)  
+All class methods are documented in [the Wiki](https://github.com/PHPAuth/PHPAuth/wiki/Class-Methods)
 System error codes are listed and explained [here](https://github.com/PHPAuth/PHPAuth/wiki/System-error-codes)
 
 
@@ -350,7 +366,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <table>
   <tr>
     <td align="center"><a href="https://hemk.es/"><img src="https://avatars2.githubusercontent.com/u/15839724?v=4" width="100px;" alt=""/><br /><sub><b>Nico</b></sub></a><br /><a href="https://github.com/PHPAuth/PHPAuth/commits?author=turbopixel" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/hajro92"><img src="https://avatars0.githubusercontent.com/u/15570002?v=4" width="100px;" alt=""/><br /><sub><b>Hajrudin</b></sub></a><br /><a href="#translation-hajro92" title="Translation">🌍</a></td>
+    <td align="center"><a href="https://github.com/hajro92"><img src="https://avatars0.githubusercontent.com/u/15570002?v=4" width="100px;" alt=""/><br /><sub><b>Hajrudin</b></sub></a><br /><a href="https://github.com/PHPAuth/PHPAuth/commits?author=hajro92" title="Translation">🌍</a></td>
     <td align="center"><a href="https://github.com/Conver"><img src="https://avatars1.githubusercontent.com/u/6231022?v=4" width="100px;" alt=""/><br /><sub><b>conver</b></sub></a><br /><a href="https://github.com/PHPAuth/PHPAuth/commits?author=conver" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/louis123562"><img src="https://avatars1.githubusercontent.com/u/36068395?v=4" width="100px;" alt=""/><br /><sub><b>louis123562</b></sub></a><br /><a href="https://github.com/PHPAuth/PHPAuth/commits?author=louis123562" title="Documentation">📖</a></td>
     <td align="center"><a href="http://www.ifscore.info"><img src="https://avatars1.githubusercontent.com/u/4574233?v=4" width="100px;" alt=""/><br /><sub><b>ANDRES TELLO</b></sub></a><br /><a href="https://github.com/PHPAuth/PHPAuth/commits?author=Criptos" title="Code">💻</a></td>

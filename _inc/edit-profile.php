@@ -17,8 +17,11 @@
 
       $users_info = $dbh->query("SELECT * FROM users_info WHERE user_id = $user_id");
       $posts_info = $dbh->query("SELECT * FROM posts WHERE user_id = $user_id");
+      $comments_info = $dbh->query("SELECT * FROM comments WHERE user_id = $user_id");
+
+      $user_info = $users_info->fetch();
       $post_info = $posts_info->fetch();
-		  $info = $users_info->fetch();
+      $comment_info = $comments_info->fetch();
     }
 
     $first_name = $_POST['first_name'];
@@ -34,7 +37,7 @@
     $file = basename($_FILES["file"]["name"]);
 
     if($file == ''){
-      $file = $info['user_img'];
+      $file = $user_info['user_img'];
     } 
 
     move_uploaded_file($_FILES['file']['tmp_name'],$target_dir.$name);
@@ -55,11 +58,16 @@
 
     if($post_info){
       $post_update = $dbh->query("UPDATE posts SET
-              user_name = '$user_name'
+            user_name = '$user_name'
             WHERE user_id = $user_id;
       ");
 
-      if($user_update && $post_update){
+      $comment_update = $dbh->query("UPDATE comments SET
+            user_name = '$user_name'
+            WHERE user_id = $user_id;
+      ");
+
+      if($user_update && $post_update && $comment_update){
         header('Location: '.BASE_URL.'sub_pages/profile.php');
         die(); 
       } else {
@@ -78,3 +86,4 @@
 
 
     
+   

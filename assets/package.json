@@ -13,6 +13,7 @@
     "babel-cli": "^6.26.0"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.1"
+    "@fortawesome/fontawesome-free": "^5.15.1",
+    "aos": "^2.3.4"
   }
 }

@@ -49,3 +49,32 @@ header {
        }
     }
 }
+
+footer {
+    background: black;
+    margin-bottom: -1em;
+    .contact {
+        width: 60%;
+        margin: auto;
+        padding: 2em;
+        h3{
+            text-align: left;
+            font-size: 2em;
+            width: 90%;
+            margin: auto;
+            padding: .2em;
+            color: var(--color-headings);
+        }
+        form {
+            @extend %formStyles;
+        }
+        @media (max-width: 880px){
+            width: 80%;
+        }
+
+        @media (max-width: 600px){
+            width: 100%;
+            padding: 2em 0;
+        }
+    }
+}

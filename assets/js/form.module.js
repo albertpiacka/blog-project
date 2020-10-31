@@ -5,17 +5,13 @@ let signUp = document.querySelector('.sign-up a');
 
 let signControls = [signIn, signUp];
 
-if(signControls){
-    signControls.forEach(sign => {
-        if(sign){
-            sign.addEventListener('click', function (e) {
-                e.preventDefault();
-                var url = this.getAttribute('href');
-                returnData(url);
-            });
-        }
+signControls.forEach(sign => {
+    sign.addEventListener('click', function (e) {
+        e.preventDefault();
+        var url = this.getAttribute('href');
+        returnData(url);
     });
-}
+});
 
 function returnData(url) {
     fetch(url).then(function (response) {
@@ -24,7 +20,9 @@ function returnData(url) {
     }).then(function (html) {
         // Initialize the DOM parser
         var parser = new DOMParser();
+        let overlayInit = document.querySelector('.overlay');
 
+        var main = document.querySelector('.content-container');
         let body = document.querySelector('body');
         let wrapper = document.querySelector('.wrapper');
         let sideMenu = document.querySelector('.side-menu');

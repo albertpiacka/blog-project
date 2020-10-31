@@ -30,16 +30,14 @@
 	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
 	<meta name="referrer" content="strict-origin-when-cross-origin">
 		<link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@300;400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/node_modules/@fortawesome/fontawesome-free/css/all.css">
+		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/node_modules/aos/dist/aos.css">
+		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/node_modules/@fortawesome/fontawesome-free/css/all.min.css">
 		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/css/normalize.css">
 		<link rel="stylesheet" href="<?php echo BASE_URL ?>assets/css/main.css">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title><?php echo ucfirst($new_name); ?> / Chefly</title>
-		<!--[if lt IE 9]>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
-		<![endif]-->
+		<!-- <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script> -->
 	</head>
 	<body class="<?php echo $page_name; ?>">
 
@@ -93,6 +91,12 @@
 						?>
 						
 					</ul>
+				</section>
+
+				<section class="search-bar">
+					<form id="searchbar" action="<?php echo BASE_URL ?>sub_pages/people.php" method="post">
+						<input type="text" name="searchbar" placeholder="Search for profile">
+					</form>
 				</section>
 
 				<section class="articles">

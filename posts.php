@@ -1,7 +1,7 @@
 <?php include_once('_partials/header.php') ?>
 
 				<section class="post-section">
-						<div class="flash-message">
+						<div data-aos="fade-up" class="flash-message">
 							<?php $msg->display(); ?>
 						</div>
 
@@ -12,12 +12,12 @@
 									echo "<p>I'm so empty :-(</p>";
 								} else {
 									foreach($posts as $post){
-										echo '<div id="post-'.$post['id'].'" class="post post-'.$post['id'].'">';
+										echo '<div id="post-'.$post['id'].'" class="post post-'.$post['id'].'" data-aos="fade-up">';
 										echo 	'<div class="img-container">';
 										if($post['img_dir']){
 											echo 		'<img src="assets/files/'.$post['img_dir'].'" alt="haha">';
 										} else {
-											echo 		'<div class="empty-div	"></div>';
+											echo 		'<div class="empty-div"></div>';
 										}
 										echo	'</div>';
 	
@@ -84,6 +84,17 @@
 			</div>
 
 		</div>
+
+		<footer data-aos="fade-up">
+			<div class="contact">
+				<h3 data-aos="fade-up" data-aos-delay="50">Leave us a message</h3>
+				<form action="#" data-aos="fade-up" data-aos-delay="100">
+					<input type="email" placeholder="Email">
+					<textarea name="yourmessage" id="yourmessage" cols="30" rows="10" placeholder="Leave a message"></textarea>
+					<input type="submit" value="Send">
+				</form>
+			</div>
+		</footer>
 
 <?php include_once('_partials/footer.php') ?>	
 
